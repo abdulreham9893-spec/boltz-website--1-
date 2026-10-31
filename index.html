@@ -1,0 +1,803 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Boltz — Design &amp; development studio</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Boltz is a design and development studio for websites, products and brands.">
+<link rel="icon" type="image/png" href="assets/boltz-bolt-violet.png">
+<script src="./support.js"></script>
+<link rel="stylesheet" href="ds/boltz/components/bundle.css">
+<script src="ds/boltz/components/bundle.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Koulen&amp;family=Manrope:wght@400;500;600;700&amp;display=swap">
+<style>
+:root{--background:#ffffff;--foreground:#19191b;--card:#ffffff;--card-foreground:var(--foreground);--popover:#ffffff;--popover-foreground:var(--foreground);--primary:#7952d6;--primary-hover:#6741bd;--primary-foreground:#ffffff;--secondary:#f4f4f5;--secondary-foreground:var(--foreground);--muted:#f5f5f5;--muted-foreground:#626267;--accent:#f1ecfc;--accent-foreground:#5b3bb0;--spark:#d6f24b;--coral:#f0603a;--on-highlight:#19191b;--destructive:#dc2626;--destructive-foreground:#ffffff;--border:#e4e4e7;--input:#8e8e95;--ring:var(--primary);--inverse:#151517;--inverse-foreground:#f4f4f5;--inverse-muted:#a1a1a8;--shadow-sm:0 2px 8px #0000000b;--shadow-md:0 4px 16px #00000014;--shadow-lg:0 24px 100px #00000033;--space-1:4px;--space-2:8px;--space-3:12px;--space-4:16px;--space-6:24px;--space-8:32px;--space-12:48px;--space-16:64px;--space-24:96px;--space-32:128px;--radius-sm:4px;--radius-md:10px;--radius-lg:16px;--radius-xl:24px;--radius-full:9999px;--font-sans:"Manrope", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;--font-display:"Koulen", "Bebas Neue", "Arial Narrow", Impact, sans-serif;--ease:cubic-bezier(.25,.1,.25,1)}
+body{margin:0;background:var(--background);color:var(--foreground);font-family:var(--font-sans);-webkit-font-smoothing:antialiased}
+a{color:var(--primary)}a:hover{color:var(--primary-hover)}
+.wrap{box-sizing:border-box;width:100%;max-width:1328px;margin:0 auto;padding-inline:clamp(16px,4vw,48px)}
+.nav-links a{color:var(--foreground);text-decoration:none;font-size:14px;font-weight:500;padding:8px 12px;border-radius:9999px;transition:background-color .2s var(--ease)}
+.nav-links a:hover{background:var(--secondary);color:var(--foreground)}
+.nav-links a:focus-visible,.chip:focus-visible,.copy:focus-visible,.card-link:focus-visible{outline:2px solid var(--ring);outline-offset:2px}
+.hero-bars{position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(118deg,transparent 0 46px,rgba(121,82,214,.07) 46px 58px,transparent 58px 104px);background-size:400px 400px;animation:drift 18s linear infinite;mask-image:radial-gradient(120% 90% at 85% 40%,#000 0%,#000 30%,transparent 75%);-webkit-mask-image:radial-gradient(120% 90% at 85% 40%,#000 0%,#000 30%,transparent 75%)}
+@keyframes drift{to{background-position:400px 0}}
+.marquee{display:flex;width:max-content;gap:48px;animation:slide 32s linear infinite}
+.marquee-box:hover .marquee{animation-play-state:paused}
+@keyframes slide{to{transform:translateX(-50%)}}
+.two-col{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:48px}
+.three-col{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.work-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+.card-link{display:flex;flex-direction:column;gap:16px;text-decoration:none;color:var(--foreground);border-radius:16px}
+.card-link:hover{color:var(--foreground)}
+.shot{position:relative;aspect-ratio:16/10;max-width:100%;border-radius:16px;overflow:hidden;transition:transform .5s var(--ease),box-shadow .5s var(--ease)}
+.card-link:hover .shot{transform:translateY(-4px);box-shadow:0 24px 60px rgba(25,25,27,.14)}
+.shot-cta{position:absolute;right:16px;bottom:16px;display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 6px 0 16px;border-radius:9999px;background:var(--background);color:var(--foreground);font-size:13px;font-weight:600;opacity:0;transform:translateY(8px);transition:opacity .3s var(--ease),transform .3s var(--ease)}
+.card-link:hover .shot-cta,.card-link:focus-visible .shot-cta{opacity:1;transform:none}
+.chip{display:inline-flex;align-items:center;gap:8px;height:36px;padding:0 16px;border-radius:9999px;border:1px solid var(--input);background:var(--background);color:var(--foreground);font:500 13px/1 var(--font-sans);cursor:pointer;transition:background-color .2s var(--ease),color .2s var(--ease),border-color .2s var(--ease)}
+.chip:hover{border-color:var(--foreground)}
+.chip.on{background:var(--foreground);border-color:var(--foreground);color:var(--background)}
+.chip-dark{border-color:#5c5c63;background:transparent;color:var(--inverse-foreground)}
+.chip-dark:hover{border-color:var(--inverse-foreground)}
+.chip-dark.on{background:var(--spark);border-color:var(--spark);color:var(--on-highlight)}
+.contact-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:48px;align-items:start}
+.copy{display:inline-flex;align-items:center;gap:8px;height:36px;padding:0 14px;border-radius:9999px;border:1px solid var(--input);background:var(--background);color:var(--foreground);font:600 13px/1 var(--font-sans);cursor:pointer}
+.foot-grid{display:grid;grid-template-columns:minmax(0,1.4fr) repeat(3,minmax(0,1fr));gap:32px}
+.foot-grid a{color:var(--inverse-foreground);text-decoration:none;font-size:14px;line-height:2}
+.foot-grid a:hover{color:var(--accent)}
+.step{transition:background-color .3s var(--ease)}
+.step:hover{background:var(--accent)}
+@media (max-width:900px){
+  .two-col,.three-col,.work-grid,.contact-grid{grid-template-columns:minmax(0,1fr)}
+  .foot-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .nav-links{display:none!important}
+  .hide-sm{display:none!important}
+}
+@media (prefers-reduced-motion:reduce){.hero-bars,.marquee{animation:none}.shot,.card-link .shot-cta{transition:none}}
+.hero{position:relative;background-color:var(--primary);background-image:linear-gradient(rgba(255,255,255,.09) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.09) 1px,transparent 1px);background-size:64px 64px;color:var(--primary-foreground);overflow:hidden}
+.poster{margin:0;display:flex;flex-direction:column;font-size:clamp(56px,11vw,168px);line-height:.84;font-weight:800;letter-spacing:-.045em;text-transform:uppercase}
+.poster>span{display:block}
+.squig{position:absolute;z-index:2;pointer-events:none;fill:none;stroke:var(--spark);stroke-width:6;stroke-linecap:round;stroke-linejoin:round}
+.sticker{position:absolute;z-index:4;right:clamp(16px,6vw,96px);bottom:56px;display:grid;place-items:center;width:144px;height:144px;border-radius:9999px;background:var(--spark);color:var(--on-highlight);text-decoration:none}
+.sticker:hover{color:var(--on-highlight)}
+.sticker:focus-visible{outline:2px solid var(--primary-foreground);outline-offset:4px}
+.sticker svg.ring{position:absolute;inset:0;width:100%;height:100%;animation:spin 14s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.pill-spark{display:inline-flex;align-items:center;gap:12px;height:56px;padding:0 6px 0 26px;border-radius:9999px;background:var(--primary-foreground);color:var(--primary);text-decoration:none;font-size:15px;font-weight:700;transition:transform .2s var(--ease)}
+.pill-spark:hover{color:var(--primary);transform:translateY(-2px)}
+.pill-ghost{display:inline-flex;align-items:center;height:56px;padding:0 26px;border-radius:9999px;border:1.5px solid rgba(255,255,255,.7);color:var(--primary-foreground);text-decoration:none;font-size:15px;font-weight:600;transition:background-color .2s var(--ease)}
+.pill-ghost:hover{background:rgba(255,255,255,.14);color:var(--primary-foreground)}
+.pill-spark:focus-visible,.pill-ghost:focus-visible{outline:2px solid var(--primary-foreground);outline-offset:3px}
+.flow{display:grid;grid-template-columns:minmax(0,1fr) 72px minmax(0,1fr) 72px minmax(0,1fr);align-items:center}
+.flow-card{display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px;min-height:300px;padding:32px 24px;border-radius:24px;background:var(--secondary);box-sizing:border-box}
+.flow-card h3{margin:0;font-size:clamp(20px,1.9vw,26px);line-height:1.02;font-weight:800;letter-spacing:-.02em;text-transform:uppercase}
+.flow-arrow{fill:none;stroke:var(--foreground);stroke-width:4;stroke-linecap:round;stroke-linejoin:round;justify-self:center}
+.hl{background:var(--accent);color:var(--accent-foreground);border-radius:10px;padding:0 .08em;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.hl-w{background:var(--background);color:var(--on-highlight);border-radius:6px;padding:1px 6px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.hl-s{background:var(--primary);color:var(--primary-foreground);border-radius:14px;padding:0 .1em}
+.band{position:relative;overflow:hidden;background:var(--accent);color:var(--foreground)}
+.band-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:center}
+.bento{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.bento-cell{display:flex;flex-direction:column;justify-content:space-between;gap:48px;min-height:230px;padding:28px;border-radius:24px;box-sizing:border-box}
+.ways{display:grid;grid-template-columns:minmax(0,1fr) repeat(3,minmax(0,1fr));gap:16px;align-items:stretch}
+.way{position:relative;display:flex;flex-direction:column;justify-content:flex-end;gap:16px;min-height:440px;padding:28px;border-radius:24px;overflow:hidden;text-decoration:none;box-sizing:border-box;transition:transform .4s var(--ease)}
+.way:hover{transform:translateY(-6px)}
+.way:focus-visible{outline:2px solid var(--primary-foreground);outline-offset:4px}
+.way-plus{position:absolute;top:20px;right:20px;display:grid;place-items:center;width:40px;height:40px;border-radius:9999px;transition:transform .4s var(--ease)}
+.way:hover .way-plus{transform:rotate(90deg)}
+@media (max-width:900px){
+  .squig,.flow-arrow{display:none!important}
+  .flow{grid-template-columns:minmax(0,1fr);gap:16px}
+  .band-grid,.bento,.ways{grid-template-columns:minmax(0,1fr)}
+  .sticker{position:relative;right:auto;bottom:auto;margin-top:32px}
+  .way{min-height:260px}
+}
+@media (prefers-reduced-motion:reduce){.sticker svg.ring{animation:none}.way,.way-plus,.pill-spark{transition:none}}
+.tm-head{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,9fr);gap:24px;align-items:start}
+.tm-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;align-items:stretch}
+.tm-col{display:flex;flex-direction:column;gap:8px;min-width:0}
+.tm-card{display:flex;flex-direction:column;border-radius:16px;background:var(--card);box-sizing:border-box;min-width:0}
+.tm-person{flex-direction:row;align-items:center;gap:12px;padding:18px 20px}
+.tm-quote{flex:1;display:flex;flex-direction:column;gap:24px;min-height:340px;padding:22px 22px 26px;border-radius:16px;background:var(--card);box-sizing:border-box;transition:background-color .35s var(--ease),transform .35s var(--ease)}
+.tm-quote:hover{transform:translateY(-3px)}
+.tm-quote.open{background:var(--accent)}
+.tm-av{display:inline-grid;place-items:center;flex:none;width:40px;height:40px;border-radius:9999px;border:2px solid var(--card);font-size:15px;font-weight:800;box-sizing:border-box}
+.tm-plus{display:grid;place-items:center;width:32px;height:32px;padding:0;border-radius:9999px;border:1px solid var(--input);background:transparent;color:var(--foreground);cursor:pointer;transition:transform .35s var(--ease),background-color .2s var(--ease)}
+.tm-plus:hover{background:var(--secondary)}
+.tm-plus[aria-expanded="true"]{transform:rotate(45deg);background:var(--foreground);border-color:var(--foreground);color:var(--background)}
+.tm-plus:focus-visible{outline:2px solid var(--ring);outline-offset:2px}
+@media (max-width:1100px){.tm-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:640px){.tm-grid,.tm-head{grid-template-columns:minmax(0,1fr)}.tm-quote{min-height:240px}}
+.navbar{display:flex;align-items:center;justify-content:space-between;gap:16px;height:64px;padding:0 8px 0 24px;border-radius:20px;box-sizing:border-box;backdrop-filter:blur(20px) saturate(170%);-webkit-backdrop-filter:blur(20px) saturate(170%);transition:background-color .35s var(--ease),border-color .35s var(--ease),box-shadow .35s var(--ease)}
+.navbar.on-hero{background:linear-gradient(135deg,rgba(255,255,255,.22),rgba(255,255,255,.06));border:1px solid rgba(255,255,255,.32);box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 12px 40px rgba(25,25,27,.22)}
+.navbar.solid{background:rgba(255,255,255,.62);border:1px solid rgba(255,255,255,.7);box-shadow:inset 0 1px 0 rgba(255,255,255,.9),0 12px 40px rgba(25,25,27,.12)}
+.navbar .logo-v,.navbar.on-hero .logo-v{display:none}
+.navbar .logo-w{display:block}
+.navbar.solid .logo-w{display:none}
+.navbar.solid .logo-v{display:block}
+.navbar.on-hero .nav-links a{color:var(--primary-foreground)}
+.navbar.on-hero .nav-links a:hover{background:rgba(255,255,255,.16);color:var(--primary-foreground)}
+.nav-cta{display:inline-flex;align-items:center;gap:10px;height:48px;padding:0 6px 0 20px;border-radius:9999px;text-decoration:none;font-size:14px;font-weight:700;transition:background-color .3s var(--ease),color .3s var(--ease)}
+.nav-cta-chip{display:inline-grid;place-items:center;width:36px;height:36px;border-radius:9999px;transition:transform .3s var(--ease)}
+.nav-cta:hover .nav-cta-chip{transform:rotate(45deg)}
+.nav-cta:focus-visible{outline:2px solid var(--primary-foreground);outline-offset:3px}
+.on-hero .nav-cta,.on-hero .nav-cta:hover{background:var(--primary-foreground);color:var(--primary)}
+.on-hero .nav-cta-chip{background:var(--primary);color:var(--primary-foreground)}
+.solid .nav-cta,.solid .nav-cta:hover{background:var(--foreground);color:var(--background)}
+.solid .nav-cta-chip{background:var(--primary);color:var(--primary-foreground)}
+@media (prefers-reduced-motion:reduce){.navbar,.nav-cta,.nav-cta-chip{transition:none}}
+h1,h2,h3:not(.bz-acc__heading),.bz-services__title,.flow-card h3,.bento-cell p:first-child,.wk-name,.wk-more-name,.tm-person span:first-child{font-family:var(--font-display)!important;font-weight:400!important;font-synthesis:none;text-transform:uppercase;letter-spacing:0.005em!important}
+h2{line-height:0.92!important;font-size:clamp(48px,6.4vw,104px)!important}
+#testimonials h2{font-size:clamp(88px,15vw,232px)!important;line-height:0.82!important}
+.poster{font-size:clamp(72px,14vw,220px)!important;line-height:0.86!important}
+.bz-services__title{font-size:clamp(40px,3.8vw,54px)!important;line-height:0.92!important}
+.flow-card h3{font-size:clamp(28px,2.6vw,36px)!important;line-height:0.95!important}
+.bento-cell p:first-child{font-size:clamp(48px,4.6vw,68px)!important;line-height:0.9!important}
+.statement{margin:0 auto;max-width:17ch;text-align:center;font-family:var(--font-display);font-weight:400;font-synthesis:none;text-transform:uppercase;font-size:clamp(44px,6vw,92px);line-height:.98;letter-spacing:.005em;color:#f4f4f5}
+.statement em{display:inline-block;font-style:normal;transform:skewX(-12deg);padding:0 .04em}
+.stuck{position:absolute;display:flex;flex-direction:column;justify-content:space-between;width:150px;aspect-ratio:3/4;padding:12px;border-radius:16px;box-shadow:0 18px 40px rgba(0,0,0,.55);box-sizing:border-box;font-family:var(--font-display);text-transform:uppercase;line-height:.9;transition:transform .4s var(--ease)}
+.stuck:hover{transform:rotate(0deg) scale(1.04)!important}
+.ways .way:nth-child(2){transform:rotate(-2.5deg)}
+.ways .way:nth-child(3){transform:rotate(1.5deg) translateY(-28px)}
+.ways .way:nth-child(4){transform:rotate(3deg)}
+.ways .way:hover{transform:rotate(0deg) translateY(-10px)}
+.theme-btn{display:inline-grid;place-items:center;width:44px;height:44px;padding:0;border-radius:9999px;border:1px solid transparent;background:transparent;cursor:pointer;transition:background-color .2s var(--ease),transform .4s var(--ease)}
+.theme-btn:hover{transform:rotate(20deg)}
+.on-hero .theme-btn{color:var(--primary-foreground);border-color:rgba(255,255,255,.35)}
+.on-hero .theme-btn:hover{background:rgba(255,255,255,.16)}
+.solid .theme-btn{color:var(--foreground);border-color:var(--input)}
+.solid .theme-btn:hover{background:var(--secondary)}
+.theme-btn:focus-visible{outline:2px solid var(--ring);outline-offset:2px}
+.theme-dark{--background:#0e0e10;--foreground:#f4f4f5;--card:#17171a;--popover:#17171a;--secondary:#1f1f23;--muted:#131316;--muted-foreground:#a1a1a8;--accent:#241b3d;--accent-foreground:#d4c6fb;--border:#2a2a2e;--input:#66666e;--inverse:#1b1b1f;--inverse-foreground:#f4f4f5;--inverse-muted:#a1a1a8;--destructive:#f87171;--shadow-sm:0 2px 8px #00000066;--shadow-md:0 4px 16px #00000080;--shadow-lg:0 24px 100px #000000b3;color-scheme:dark}
+.theme-dark #testimonials figure a,.theme-dark #faqs a:not([class]){color:#b9a2fb}
+.theme-dark .bz-btn--link{color:#b9a2fb}
+.theme-dark .navbar.solid{background:rgba(23,23,26,.62);border-color:rgba(255,255,255,.1);box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 12px 40px rgba(0,0,0,.5)}
+.theme-dark .navbar.solid .logo-w{display:block}
+.theme-dark .navbar.solid .logo-v{display:none}
+.theme-dark .solid .nav-cta,.theme-dark .solid .nav-cta:hover{background:var(--primary);color:var(--primary-foreground)}
+.theme-dark .solid .nav-cta-chip{background:var(--primary-foreground);color:var(--primary)}
+.theme-dark #start,.theme-dark #contact,.theme-dark footer{border-top:1px solid #2a2a2e}
+.theme-dark .hl-w{background:#ffffff}
+@media (max-width:900px){.stuck{display:none}}
+@media (prefers-reduced-motion:reduce){.stuck,.theme-btn{transition:none}}
+.mono{font-family:var(--font-sans);font-size:13px;font-weight:600;letter-spacing:0;text-transform:none}
+.tm-person span:first-child{font-size:24px!important;font-weight:400!important;line-height:1}
+.tm-person .tm-role,.tm-person .tm-role *{font-family:var(--font-sans)!important;font-size:14px!important;line-height:20px!important;font-weight:500!important;text-transform:none!important;letter-spacing:0!important;color:var(--muted-foreground)}
+.wk-list{list-style:none;margin:0;padding:0;border-top:1px solid var(--foreground)}
+.wk-list li{border-bottom:1px solid var(--border)}
+.wk-row{display:grid;grid-template-columns:56px minmax(0,5fr) minmax(0,5fr) 56px;align-items:center;gap:24px;padding:22px 0;color:var(--foreground);text-decoration:none;transition:padding .35s var(--ease)}
+.wk-row:hover{color:var(--foreground);padding-left:12px}
+.wk-row:focus-visible{outline:2px solid var(--ring);outline-offset:2px}
+.wk-n{color:var(--muted-foreground)}
+.wk-name{font-size:clamp(44px,5vw,80px);line-height:.9}
+.wk-meta{display:flex;flex-direction:column;gap:6px;min-width:0}
+.wk-sum{font-size:14px;line-height:21px;color:var(--muted-foreground);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+
+.wk-go{display:inline-grid;place-items:center;width:56px;height:56px;border-radius:9999px;border:1px solid var(--input);transition:background-color .3s var(--ease),color .3s var(--ease),transform .35s var(--ease)}
+.wk-row:hover .wk-go{background:var(--primary);border-color:var(--primary);color:var(--primary-foreground);transform:rotate(45deg)}
+.wk-more{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.wk-more-top{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.wk-more-num{font-family:var(--font-display);font-size:28px;line-height:1;color:var(--primary)}
+.wk-more-card{display:flex;flex-direction:column;gap:8px;padding:22px;border-radius:20px;background:var(--secondary)}
+.wk-more-name{font-size:32px;line-height:.95}
+@media (max-width:1100px){.wk-more{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:900px){.pr-grid,.pr-lists,.wk-more{grid-template-columns:minmax(0,1fr)}.wk-row{grid-template-columns:40px minmax(0,1fr) 48px}.wk-meta{display:none}.wk-go{width:48px;height:48px}}
+@media (prefers-reduced-motion:reduce){.wk-row,.wk-go{transition:none}}
+.ww-line{margin:0;max-width:20ch;font-size:clamp(40px,4.6vw,72px)!important;line-height:1!important;text-wrap:balance}
+.ww-pill{display:inline-flex;align-items:center;justify-content:center;vertical-align:middle;width:1.7em;height:.78em;margin:-.12em .06em 0;border-radius:9999px;overflow:hidden;transform:rotate(-4deg);transition:transform .4s var(--ease)}
+.ww-pill-photo{width:2.1em;background:var(--inverse);color:var(--inverse-muted);font-family:var(--font-sans);font-size:.16em;height:4.9em;width:13em;font-weight:600;transform:rotate(3deg)}
+.ww-line:hover .ww-pill{transform:rotate(0deg)}
+.ct-bolts{position:absolute;inset:0;pointer-events:none;z-index:0}
+.ct-bolt{position:absolute;height:auto;opacity:.12;will-change:transform;animation:boltFloat 14s ease-in-out infinite}
+.ct-b1{width:520px;right:-120px;top:-80px;opacity:.22;animation:boltSpin 40s linear infinite}
+.ct-b2{width:120px;left:6%;top:18%;animation-duration:11s}
+.ct-b3{width:200px;left:38%;bottom:-60px;opacity:.16;animation-duration:16s;animation-delay:-4s}
+.ct-b4{width:64px;right:30%;top:12%;opacity:.18;animation-duration:9s;animation-delay:-2s}
+.ct-b5{width:90px;left:-20px;bottom:14%;opacity:.2;animation-duration:13s;animation-delay:-6s}
+.ct-b6{width:44px;right:12%;bottom:18%;opacity:.25;animation-duration:8s;animation-delay:-3s}
+@keyframes boltFloat{0%,100%{transform:translateY(0) rotate(-8deg)}50%{transform:translateY(-28px) rotate(8deg)}}
+@keyframes boltSpin{0%{transform:rotate(0deg) scale(1)}50%{transform:rotate(180deg) scale(1.08)}100%{transform:rotate(360deg) scale(1)}}
+@media (prefers-reduced-motion:reduce){.ct-bolt{animation:none}}
+.ww-two{max-width:none;width:100%;text-align:left;font-size:clamp(32px,3.8vw,58px)!important}
+.ww-two>span{display:block}
+@media (min-width:900px){.ww-two>span{white-space:nowrap}}
+.ww-grid{padding-top:32px;border-top:1px solid var(--foreground)}
+.ww-intro{margin:0;font-size:19px;line-height:31px;color:var(--muted-foreground);max-width:40ch}
+.ww-values{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px}
+.ww-value{display:grid;grid-template-columns:44px minmax(0,1fr);column-gap:16px;row-gap:4px;align-items:center}
+.ww-value h3{margin:0;font-size:28px!important;line-height:1!important}
+.ww-value p{grid-column:2;margin:0;font-size:15px;line-height:22px;color:var(--muted-foreground)}
+.ww-icon{grid-row:span 2;align-self:start;display:grid;place-items:center;width:44px;height:44px;border-radius:9999px}
+@media (max-width:900px){.ww-grid,.ww-values{grid-template-columns:minmax(0,1fr)}.ww-pill-photo{display:none}}
+@media (prefers-reduced-motion:reduce){.ww-pill{transition:none}}
+.pr-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:24px}
+.pr-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:32px;align-items:start}
+.pr-tabs{display:flex;flex-direction:column;gap:6px}
+.pr-tab{display:grid;grid-template-columns:40px minmax(0,1fr) 32px;align-items:center;gap:16px;padding:14px 16px 14px 14px;border:1px solid var(--border);border-radius:18px;background:var(--card);color:var(--muted-foreground);text-align:left;cursor:pointer;transition:background-color .3s var(--ease),border-color .3s var(--ease),color .3s var(--ease),transform .3s var(--ease)}
+.pr-tab:hover{color:var(--foreground);border-color:var(--input);transform:translateX(4px)}
+.pr-tab.on{background:var(--accent);border-color:var(--accent);color:var(--foreground)}
+.pr-tab:focus-visible{outline:2px solid var(--ring);outline-offset:2px}
+.pr-tab-n{display:grid;place-items:center;width:40px;height:40px;border-radius:9999px;background:var(--secondary);color:var(--foreground);font-family:var(--font-sans);font-size:13px;font-weight:700;font-variant-numeric:tabular-nums;transition:background-color .3s var(--ease),color .3s var(--ease)}
+.pr-tab.on .pr-tab-n{background:var(--primary);color:var(--primary-foreground)}
+.pr-tab-t{display:flex;flex-direction:column;gap:2px;min-width:0}
+.pr-tab-t b{font-family:var(--font-display);font-weight:400;text-transform:uppercase;font-size:28px;line-height:1}
+.pr-tab-t small{font-size:13px;line-height:18px;color:var(--muted-foreground)}
+.pr-tab-go{display:grid;place-items:center;width:32px;height:32px;border-radius:9999px;color:var(--primary);opacity:0;transform:translateX(-6px);transition:opacity .3s var(--ease),transform .3s var(--ease)}
+.pr-tab.on .pr-tab-go{opacity:1;transform:none}
+.pr-panel{position:relative;display:flex;flex-direction:column;gap:18px;padding:28px 32px 28px;border-radius:28px;background:var(--primary);color:var(--primary-foreground);min-width:0;overflow:hidden}
+.pr-panel::after{content:"";position:absolute;right:-60px;bottom:-80px;width:260px;height:260px;border-radius:9999px;background:radial-gradient(circle,rgba(214,242,75,.28),transparent 70%);pointer-events:none}
+.pr-progress{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px}
+.pr-seg{height:5px;border-radius:9999px;background:rgba(255,255,255,.25);overflow:hidden}
+.pr-seg i{display:block;height:100%;width:0;border-radius:inherit;background:#ffffff}
+.pr-seg i.full{width:100%}
+.pr-seg i.run{animation:prfill 7s linear forwards}
+@keyframes prfill{from{width:0}to{width:100%}}
+.pr-panel-top{display:flex;justify-content:space-between;align-items:center;gap:16px}
+.pr-step{display:inline-flex;align-items:center;height:32px;padding:0 14px;border-radius:9999px;background:rgba(255,255,255,.16);font-size:13px;font-weight:700}
+.pr-icon{display:grid;place-items:center;width:52px;height:52px;border-radius:9999px;background:var(--spark);color:var(--on-highlight)}
+.pr-title{margin:0;font-size:clamp(40px,3.6vw,56px)!important;line-height:.92!important}
+.pr-body{margin:0;max-width:50ch;font-size:16px;line-height:25px;color:rgba(255,255,255,.88)}
+.pr-lists{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;padding:20px 0;border-top:1px solid rgba(255,255,255,.22);border-bottom:1px solid rgba(255,255,255,.22)}
+.pr-lists .mono{color:rgba(255,255,255,.75)!important}
+.pr-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px;font-size:14px;line-height:21px;font-weight:600}
+.pr-list li{display:flex;gap:10px;align-items:flex-start}
+.pr-check{flex:none;display:inline-grid;place-items:center;width:20px;height:20px;border-radius:9999px;background:#ffffff;color:var(--primary)}
+.pr-list-you .pr-check{background:transparent;border:1.5px solid rgba(255,255,255,.7);color:#ffffff;box-sizing:border-box}
+.pr-foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;position:relative;z-index:1}
+.pr-example{display:inline-flex;align-items:center;gap:8px;height:44px;padding:0 16px;border-radius:9999px;background:#ffffff;color:var(--primary);text-decoration:none;font-weight:700;font-size:14px}
+.pr-example:hover{color:var(--primary-hover)}
+.pr-nav{display:inline-grid;place-items:center;width:44px;height:44px;padding:0;border-radius:9999px;border:1.5px solid rgba(255,255,255,.6);background:transparent;color:#ffffff;cursor:pointer}
+.pr-nav-next{background:#ffffff;color:var(--primary);border-color:#ffffff}
+.pr-nav:focus-visible,.pr-example:focus-visible{outline:2px solid #ffffff;outline-offset:3px}
+@media (prefers-reduced-motion:reduce){.pr-seg i.run{animation:none;width:100%}.pr-tab,.pr-tab-go{transition:none}}
+.wk-count{display:flex;align-items:center;gap:16px;margin:0;max-width:56ch;font-size:16px;line-height:24px;color:var(--muted-foreground)}
+.wk-count-n{flex:none;display:inline-flex;align-items:center;height:48px;padding:0 18px;border-radius:9999px;background:var(--primary);color:var(--primary-foreground);font-family:var(--font-display);font-size:30px;line-height:1;padding-top:4px;box-sizing:border-box}
+.bz-services__col,.bz-services__col:nth-child(3n+1),.bz-services__col:nth-child(3n){position:relative;padding:28px;border-radius:0;transition:background-color .4s var(--ease),color .4s var(--ease),border-radius .4s var(--ease)}
+.bz-services__col .bz-services__title,.bz-services__col .bz-services__desc,.bz-services__col .bz-services__num{transition:transform .45s var(--ease),color .4s var(--ease)}
+.bz-services__col .bz-services__tag{transition:border-color .4s var(--ease),background-color .4s var(--ease),color .4s var(--ease)}
+.bz-services__col::after{content:"";position:absolute;right:28px;bottom:28px;width:44px;height:44px;border-radius:9999px;background:var(--spark) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2319191b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M17 7l-10 10'/%3E%3Cpath d='M8 7l9 0l0 9'/%3E%3C/svg%3E") center/20px no-repeat;opacity:0;transform:scale(.6) rotate(-45deg);transition:opacity .35s var(--ease),transform .45s var(--ease)}
+.bz-services__col:hover{background:var(--primary);color:var(--primary-foreground)}
+.bz-services__col::after{display:none}
+.bz-services__col:hover .bz-services__title{transform:translateY(-8px)}
+.bz-services__col:hover .bz-services__desc,.bz-services__col:hover .bz-services__num{color:rgba(255,255,255,.85)}
+.bz-services__col:hover .bz-services__tag{border-color:rgba(255,255,255,.7);color:#ffffff}
+.bz-services__col:hover .bz-services__tag:first-child{background:#ffffff;color:var(--primary);border-color:#ffffff}
+.bz-services__col:hover .bz-services__badge--primary{background:#ffffff;color:var(--primary)}
+.bz-services__col:hover .bz-services__link{color:#ffffff}
+.bz-services__col--cta::after{display:none}
+@media (prefers-reduced-motion:reduce){.bz-services__col,.bz-services__col::after,.bz-services__col .bz-services__title{transition:none}}
+.ww-facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin:0;padding-top:24px;border-top:1px solid var(--border)}.ww-facts div{display:flex;flex-direction:column;gap:6px;min-width:0}.ww-facts dt{font-size:13px;font-weight:600;color:var(--muted-foreground)}.ww-facts dd{margin:0;font-size:18px;font-weight:600;letter-spacing:-.02em}@media (max-width:760px){.ww-facts{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.socs{display:flex;gap:10px}.socs .soc{display:inline-grid;place-items:center;width:44px;height:44px;border-radius:9999px;border:1px solid #3a3a3f;color:var(--inverse-foreground);line-height:1;transition:background-color .25s,border-color .25s,color .25s}.socs .soc:hover{background:var(--primary);border-color:var(--primary);color:var(--primary-foreground)}.socs .soc:focus-visible{outline:2px solid var(--ring);outline-offset:3px}
+</style>
+</helmet>
+
+<div class="{{themeCls}}" style="background: var(--background); color: var(--foreground); font-family: var(--font-sans); overflow-x: clip; transition: background-color .3s;">
+
+<!-- Nav -->
+<header style="position: sticky; top: 0; z-index: 30; height: 0;">
+  <div class="wrap" style="padding-top: 16px;">
+    <nav aria-label="Main" class="{{navCls}}">
+      <a href="#top" aria-label="Boltz home" style="display: inline-flex; align-items: center;">
+        <img class="logo-w" src="assets/boltz-wordmark-white.png" alt="Boltz" style="height: 24px; width: auto;">
+        <img class="logo-v" src="assets/boltz-wordmark-violet.png" alt="Boltz" style="height: 24px; width: auto;">
+      </a>
+      <div class="nav-links" style="display: flex; align-items: center; gap: 4px;">
+        <a href="#work">Work</a>
+        <a href="#studio">Studio</a>
+        <a href="#services">Services</a>
+        <a href="#testimonials">Clients</a>
+        <a href="#faqs">FAQs</a>
+      </div>
+      <div style="display: flex; align-items: center; gap: 8px;">
+      <button type="button" class="theme-btn" onClick="{{toggleTheme}}" aria-label="{{themeLabel}}" aria-pressed="{{themePressed}}">
+        <sc-if value="{{isDark}}" hint-placeholder-val="{{ false }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 12m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0"></path><path d="M3 12h1m8 -9v1m8 8h1m-9 8v1m-6.4 -15.4l.7 .7m12.1 -.7l-.7 .7m0 11.4l.7 .7m-12.1 -.7l-.7 .7"></path></svg></sc-if>
+        <sc-if value="{{isLight}}" hint-placeholder-val="{{ true }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z"></path></svg></sc-if>
+      </button>
+      <a class="nav-cta" href="#contact">Let's talk <span class="nav-cta-chip"><x-import component-from-global-scope="Boltz.Icon" name="arrow-up-right" size="{{iconSm}}"></x-import></span></a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<!-- Hero -->
+<section id="top" class="hero" style="padding: 168px 0 152px;">
+  <svg class="squig" aria-hidden="true" viewBox="0 0 190 160" style="right: 7%; top: 120px; width: 190px; height: 160px;"><path d="M176 18 C 128 4, 92 56, 124 78 C 156 100, 150 34, 104 48 C 62 62, 54 118, 22 142"></path><path d="M22 142 L 24 114 M22 142 L 48 132"></path></svg>
+  <svg class="squig" aria-hidden="true" viewBox="0 0 200 140" style="left: 15%; top: 560px; width: 200px; height: 140px;"><path d="M18 22 C 58 2, 82 60, 52 72 C 22 84, 40 22, 92 40 C 142 58, 140 108, 184 120"></path><path d="M184 120 L 160 108 M184 120 L 158 128"></path></svg>
+
+  <div class="wrap" style="position: relative; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 40px;">
+    <div style="display: inline-flex; align-self: center; align-items: center; gap: 10px; height: 36px; padding: 0 16px 0 6px; border-radius: 9999px; background: rgba(255,255,255,0.16); border: 1px solid rgba(255,255,255,0.35); font-size: 13px; font-weight: 600;">
+      <span style="display: inline-grid; place-items: center; width: 26px; height: 26px; border-radius: 9999px; background: var(--primary-foreground); color: var(--primary);"><img src="assets/boltz-bolt-violet.png" alt="" style="display: block; width: 15px; height: auto;"></span>
+      Boltz · Design &amp; development studio
+    </div>
+    <h1 class="poster" style="align-items: center;"><span><span style="color: var(--spark);">#</span>Bold ideas,</span><span>built</span><span>to launch<span style="color: var(--spark);">.</span></span></h1>
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 28px;">
+      <p style="margin: 0; max-width: 44ch; font-size: 18px; line-height: 28px; font-weight: 500;">A design and development studio for websites, products and brands. Bring us the idea, we'll design it and build it with you, all the way to launch.</p>
+      <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 12px;">
+        <a class="pill-spark" href="#contact">Start a project <span style="display: inline-grid; place-items: center; width: 44px; height: 44px; border-radius: 9999px; background: var(--primary); color: var(--primary-foreground);"><x-import component-from-global-scope="Boltz.Icon" name="arrow-up-right" size="{{iconMd}}"></x-import></span></a>
+        <a class="pill-ghost" href="#work">See our work</a>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- Process -->
+<section id="process" style="position: relative; z-index: 5; margin-top: -40px; padding: 72px 0 88px; background-color: var(--background); border-radius: 40px 40px 0 0;">
+  <div class="wrap" style="display: flex; flex-direction: column; gap: 36px;">
+    <div class="pr-head">
+      <div style="display: flex; flex-direction: column; gap: 24px;">
+        <x-import component-from-global-scope="Boltz.SectionLabel" index="{{n1}}">How a project runs</x-import>
+        <h2 style="margin: 0; font-size: clamp(44px, 5vw, 80px); line-height: .9;">From first call to launch<span style="color: var(--coral);">.</span></h2>
+      </div>
+      <p style="margin: 0; max-width: 40ch; font-size: 17px; line-height: 27px; color: var(--muted-foreground);">Five steps, one team, no surprises.</p>
+    </div>
+    <div class="pr-grid">
+      <div class="pr-tabs" role="tablist" aria-label="Project steps">
+        <sc-for list="{{steps}}" as="st" hint-placeholder-count="5">
+          <button type="button" role="tab" class="{{st.cls}}" id="{{st.tabId}}" aria-selected="{{st.selected}}" aria-controls="pr-panel" onClick="{{st.pick}}">
+            <span class="pr-tab-n">{{st.num}}</span>
+            <span class="pr-tab-t"><b>{{st.title}}</b><small>{{st.short}}</small></span>
+            <span class="pr-tab-go" aria-hidden="true"><x-import component-from-global-scope="Boltz.Icon" name="arrow-right" size="{{iconSm}}"></x-import></span>
+          </button>
+        </sc-for>
+      </div>
+      <div class="pr-panel" id="pr-panel" role="tabpanel" aria-labelledby="{{cur.tabId}}">
+        <div class="pr-progress" aria-hidden="true">
+          <sc-for list="{{steps}}" as="st" hint-placeholder-count="5"><span class="pr-seg"><i class="{{st.fill}}"></i></span></sc-for>
+        </div>
+        <div class="pr-panel-top">
+          <span class="pr-step">{{cur.stepLabel}}</span>
+          <span class="pr-icon"><x-import component-from-global-scope="Boltz.Icon" name="{{cur.icon}}" size="{{iconMd}}"></x-import></span>
+        </div>
+        <h3 class="pr-title">{{cur.title}}</h3>
+        <p class="pr-body">{{cur.body}}</p>
+        <div class="pr-lists">
+          <div>
+            <p class="mono" style="margin: 0 0 12px; color: var(--muted-foreground);">You get</p>
+            <ul class="pr-list">
+              <sc-for list="{{cur.get}}" as="g" hint-placeholder-count="3"><li><span class="pr-check"><x-import component-from-global-scope="Boltz.Icon" name="check" size="{{iconXs}}"></x-import></span>{{g}}</li></sc-for>
+            </ul>
+          </div>
+          <div>
+            <p class="mono" style="margin: 0 0 12px; color: var(--muted-foreground);">Your part</p>
+            <ul class="pr-list pr-list-you">
+              <sc-for list="{{cur.you}}" as="y" hint-placeholder-count="2"><li><span class="pr-check"><x-import component-from-global-scope="Boltz.Icon" name="plus" size="{{iconXs}}"></x-import></span>{{y}}</li></sc-for>
+            </ul>
+          </div>
+        </div>
+        <div class="pr-foot">
+          <a class="pr-example" href="{{cur.href}}"><span class="mono" style="opacity: .7;">See it in</span> {{cur.example}} <x-import component-from-global-scope="Boltz.Icon" name="arrow-up-right" size="{{iconSm}}"></x-import></a>
+          <div style="display: flex; gap: 8px;">
+            <button type="button" class="pr-nav" aria-label="Previous step" onClick="{{prevStep}}"><span style="display: inline-flex; transform: rotate(180deg);"><x-import component-from-global-scope="Boltz.Icon" name="arrow-right" size="{{iconSm}}"></x-import></span></button>
+            <button type="button" class="pr-nav pr-nav-next" aria-label="Next step" onClick="{{nextStep}}"><x-import component-from-global-scope="Boltz.Icon" name="arrow-right" size="{{iconSm}}"></x-import></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Clients -->
+<section style="padding: 40px 0;">
+  <div class="wrap" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px 48px;">
+    <p style="margin: 0; font-size: 13px; font-weight: 500; color: var(--muted-foreground);">Clients we've designed and built for</p>
+    <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 24px 56px; font-size: 22px; font-weight: 700; letter-spacing: -0.03em; color: var(--muted-foreground);">
+      <span style="font-weight: 400; letter-spacing: 0.12em;">JOMI</span><span>baucore</span><span style="letter-spacing: -0.02em;">adostri</span><span style="letter-spacing: -0.01em;">SCREENRANT</span><span style="font-family: Georgia, serif;">wm</span>
+    </div>
+  </div>
+</section>
+
+<!-- Studio -->
+<section id="studio" style="padding: 80px 0; background: var(--muted);">
+  <div class="wrap" style="display: flex; flex-direction: column; gap: 40px;">
+    <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px;">
+      <x-import component-from-global-scope="Boltz.SectionLabel" index="{{n2}}">Who we are</x-import>
+      <x-import component-from-global-scope="Boltz.Button" variant="secondary" arrow="{{yes}}" href="#contact">Work with us</x-import>
+    </div>
+    <h2 class="ww-line ww-two"><span>We're a design &amp; development studio</span> <span>for teams who care how things work<span style="color: var(--coral);">.</span></span></h2>
+    <div class="ww-grid">
+            <ul class="ww-values">
+        <li class="ww-value">
+          <span class="ww-icon" style="background: var(--primary); color: var(--primary-foreground);"><x-import component-from-global-scope="Boltz.Icon" name="focus-2" size="{{iconSm}}"></x-import></span>
+          <h3>Problem first</h3>
+          <p>We design around your customers, not a template.</p>
+        </li>
+        <li class="ww-value">
+          <span class="ww-icon" style="background: var(--spark); color: var(--on-highlight);"><x-import component-from-global-scope="Boltz.Icon" name="route" size="{{iconSm}}"></x-import></span>
+          <h3>One team</h3>
+          <p>The people who design your site build it, so what you approve is what goes live.</p>
+        </li>
+        <li class="ww-value">
+          <span class="ww-icon" style="background: var(--coral); color: var(--on-highlight);"><x-import component-from-global-scope="Boltz.Icon" name="bolt" size="{{iconSm}}"></x-import></span>
+          <h3>Built to last</h3>
+          <p>A design system and CMS your team can run without us.</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Work -->
+<section id="work" style="padding: 88px 0 88px;">
+  <div class="wrap" style="display: flex; flex-direction: column; gap: 40px;">
+    <div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 24px;">
+      <div style="display: flex; flex-direction: column; gap: 24px;">
+        <x-import component-from-global-scope="Boltz.SectionLabel" index="{{n3}}">Selected case studies</x-import>
+        <h2 style="margin: 0; font-size: clamp(56px, 8vw, 128px); line-height: .86;">Our projects<span style="color: var(--coral);">.</span></h2>
+        <p class="wk-count"><span class="wk-count-n">100+</span><span>projects delivered for startups, publishers and service businesses. Here are three we're proud of.</span></p>
+      </div>
+      <div role="group" aria-label="Filter projects" style="display: flex; flex-wrap: wrap; gap: 8px;">
+        <sc-for list="{{filters}}" as="f" hint-placeholder-count="3">
+          <button type="button" class="{{f.cls}}" aria-pressed="{{f.pressed}}" onClick="{{f.pick}}">{{f.label}} <span style="opacity: 0.6; font-variant-numeric: tabular-nums;">{{f.count}}</span></button>
+        </sc-for>
+      </div>
+    </div>
+    <ol class="wk-list">
+      <sc-for list="{{projects}}" as="p" hint-placeholder-count="4">
+        <li>
+          <a class="wk-row" href="{{p.href}}">
+            <span class="wk-n mono">{{p.num}}</span>
+            <span class="wk-name">{{p.name}}</span>
+            <span class="wk-meta"><span class="mono">{{p.type}}</span><span class="wk-sum">{{p.summary}}</span></span>
+            <span class="wk-go" aria-hidden="true"><x-import component-from-global-scope="Boltz.Icon" name="arrow-up-right" size="{{iconMd}}"></x-import></span>
+          </a>
+        </li>
+      </sc-for>
+    </ol>
+  </div>
+</section>
+
+<!-- Services -->
+<section id="services" style="padding: 96px 0 88px;">
+  <div class="wrap" style="display: flex; flex-direction: column; gap: 0;">
+    <div style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 24px; align-items: end; padding: 24px 0 56px; border-top: 1px solid var(--foreground);">
+      <p class="hide-sm" style="grid-column: span 2; margin: 0 0 12px; font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;">Services / 04</p>
+      <h2 style="grid-column: span 6; margin: 0; font-size: 36px; line-height: 1.1; font-weight: 500; letter-spacing: -1.2px; text-wrap: balance; min-width: 260px; font-style: normal; font-family: &quot;Manrope&quot;, ui-sans-serif, system-ui, -apple-system, &quot;Segoe UI&quot;, sans-serif">One studio, every stage<span style="color: var(--coral);">.</span></h2>
+      <p style="grid-column: span 4; margin: 0 0 8px; max-width: 34ch; justify-self: end; font-size: 15px; line-height: 24px; color: var(--muted-foreground); min-width: 220px;">Bring us in for one part of the project or the whole thing. We'll agree what needs to be made and how we'll deliver it.</p>
+    </div>
+    <x-import component-from-global-scope="Boltz.ServiceGrid" items="{{services}}" cta="{{serviceCta}}"></x-import>
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section id="testimonials" style="padding: 88px 0; background: var(--muted);">
+  <div class="wrap" style="display: flex; flex-direction: column; gap: 64px;">
+    <div class="tm-head">
+      <div style="padding-top: 18px;"><x-import component-from-global-scope="Boltz.SectionLabel" index="{{n5}}">Testimonials</x-import></div>
+      <div style="display: flex; flex-direction: column; gap: 8px;">
+        <h2 style="margin: 0; font-size: clamp(72px, 12vw, 184px); line-height: 0.86; font-weight: 600; letter-spacing: -0.065em;">Experiences<span style="color: var(--coral);">.</span></h2>
+      </div>
+    </div>
+
+    <div class="tm-grid">
+      <div class="tm-card" style="justify-content: space-between; gap: 40px; padding: 28px;">
+        <div style="display: flex; gap: 20px; align-items: flex-start;">
+          <p style="margin: 0; display: flex; align-items: baseline; font-size: 56px; line-height: 1; font-weight: 700; letter-spacing: -0.05em; font-variant-numeric: tabular-nums;">100+</p>
+          <p style="margin: 0; padding-top: 4px; font-size: 14px; line-height: 21px; color: var(--muted-foreground);"><strong style="color: var(--foreground);">Projects delivered</strong> for startups, publishers and service businesses.</p>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 18px;">
+          <img src="assets/boltz-wordmark-violet.png" alt="Boltz" style="display: block; align-self: flex-start; height: 20px; width: auto; max-width: 100%; object-fit: contain;">
+          <div style="display: flex; align-items: center; gap: 14px;">
+            <div style="display: flex;" aria-hidden="true">
+              <span class="tm-av" style="background: var(--accent); color: var(--accent-foreground);">J</span>
+              <span class="tm-av" style="background: var(--primary); color: var(--primary-foreground); margin-left: -10px;">A</span>
+              <span class="tm-av" style="background: var(--coral); color: var(--on-highlight); margin-left: -10px;">S</span>
+              <span class="tm-av" style="background: var(--accent); color: var(--accent-foreground); margin-left: -10px;">W</span>
+              <span class="tm-av" style="background: var(--foreground); color: var(--background); margin-left: -10px; font-size: 10px;">100+</span>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 2px;">
+              <span style="font-size: 12px; font-weight: 600; color: var(--foreground);">3 sectors</span>
+              <span style="font-size: 12px; color: var(--muted-foreground);">Medical, construction and property</span>
+            </div>
+          </div>
+          <x-import component-from-global-scope="Boltz.Button" variant="secondary" size="lg" href="#contact" style="width: 100%;">Leave a review</x-import>
+        </div>
+      </div>
+
+      <sc-for list="{{reviews}}" as="r" hint-placeholder-count="3">
+        <div class="tm-col">
+          <sc-if value="{{r.nameFirst}}" hint-placeholder-val="{{ true }}">
+            <div class="tm-card tm-person">
+              <span class="tm-av" style="background: {{r.tone}}; color: {{r.ink}};" aria-hidden="true">{{r.initial}}</span>
+              <div style="display: flex; flex-direction: column; gap: 2px; min-width: 0;"><span style="font-size: 15px; font-weight: 600;">{{r.name}}</span><span class="tm-role">{{r.role}}</span></div>
+            </div>
+          </sc-if>
+          <figure class="{{r.cls}}" style="margin: 0;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <span style="display: flex; flex-direction: column; gap: 6px;"><span style="font-size: 13px; letter-spacing: 2px; color: var(--primary);" aria-label="5 out of 5">★★★★★</span><span style="font-size: 13px; font-weight: 700;">{{r.project}}</span></span>
+              <button type="button" class="tm-plus" aria-expanded="{{r.expanded}}" aria-label="{{r.plusLabel}}" onClick="{{r.toggle}}"><x-import component-from-global-scope="Boltz.Icon" name="plus" size="{{iconSm}}"></x-import></button>
+            </div>
+            <blockquote style="margin: auto 0 0; font-size: clamp(18px, 1.5vw, 21px); line-height: 1.32; font-weight: 500; letter-spacing: -0.02em; text-indent: 2.2em;">{{r.quote}}</blockquote>
+            <sc-if value="{{r.open}}" hint-placeholder-val="{{ false }}">
+              <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; padding-top: 16px; border-top: 1px solid var(--border);">
+                <x-import component-from-global-scope="Boltz.Badge" variant="accent">{{r.project}}</x-import>
+                <a href="{{r.href}}" style="display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 700; text-decoration: none;">Read the case study <x-import component-from-global-scope="Boltz.Icon" name="arrow-up-right" size="{{iconSm}}"></x-import></a>
+              </div>
+            </sc-if>
+          </figure>
+          <sc-if value="{{r.nameLast}}" hint-placeholder-val="{{ false }}">
+            <div class="tm-card tm-person">
+              <span class="tm-av" style="background: {{r.tone}}; color: {{r.ink}};" aria-hidden="true">{{r.initial}}</span>
+              <div style="display: flex; flex-direction: column; gap: 2px; min-width: 0;"><span style="font-size: 15px; font-weight: 600;">{{r.name}}</span><span class="tm-role">{{r.role}}</span></div>
+            </div>
+          </sc-if>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faqs" style="padding: 88px 0; background: var(--muted);">
+  <div class="wrap two-col" style="align-items: start;">
+    <div style="display: flex; flex-direction: column; gap: 24px; align-items: flex-start;">
+      <x-import component-from-global-scope="Boltz.SectionLabel" index="{{n6}}">A few useful answers</x-import>
+      <h2 style="margin: 0; font-size: clamp(36px, 4.4vw, 60px); line-height: 1.02; font-weight: 600; letter-spacing: -0.045em;">Before we get started<span style="color: var(--coral);">.</span></h2>
+      <p style="margin: 0; font-size: 15px; line-height: 24px; color: var(--muted-foreground);">Something else on your mind?</p>
+      <x-import component-from-global-scope="Boltz.Button" variant="outline" arrow="{{yes}}" href="#contact">Ask us directly</x-import>
+    </div>
+    <x-import component-from-global-scope="Boltz.Accordion" items="{{faqs}}" default-value="redesign"></x-import>
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contact" style="position: relative; overflow: hidden; padding: 88px 0; background: var(--inverse); color: var(--inverse-foreground);">
+  <div class="ct-bolts" aria-hidden="true">
+    <img class="ct-bolt ct-b1" src="assets/boltz-bolt-violet.png" alt="">
+    <img class="ct-bolt ct-b2" src="assets/boltz-bolt-white.png" alt="">
+    <img class="ct-bolt ct-b3" src="assets/boltz-bolt-violet.png" alt="">
+    <img class="ct-bolt ct-b4" src="assets/boltz-bolt-white.png" alt="">
+    <img class="ct-bolt ct-b5" src="assets/boltz-bolt-violet.png" alt="">
+    <img class="ct-bolt ct-b6" src="assets/boltz-bolt-white.png" alt="">
+  </div>
+  <div class="wrap" style="position: relative; z-index: 1; display: flex; flex-direction: column; gap: 56px;">
+    <div style="display: flex; flex-direction: column; gap: 24px;">
+      <x-import component-from-global-scope="Boltz.SectionLabel" index="{{n7}}" inverse="{{yes}}">Start the conversation</x-import>
+      <h2 style="margin: 0; max-width: 14ch; font-size: clamp(44px, 6.4vw, 96px); line-height: 0.94; font-weight: 600; letter-spacing: -0.055em; text-wrap: balance;">Send us the brief<span style="color: var(--coral);">.</span></h2>
+    </div>
+    <div class="contact-grid">
+      <div style="background: var(--background); color: var(--foreground); border-radius: 24px; padding: clamp(24px, 3vw, 40px); box-shadow: var(--shadow-lg);">
+        <sc-if value="{{sent}}" hint-placeholder-val="{{ false }}">
+          <div role="status" style="display: flex; flex-direction: column; gap: 16px; align-items: flex-start; padding: 24px 0;">
+            <span style="display: inline-grid; place-items: center; width: 56px; height: 56px; border-radius: 9999px; background: var(--primary); color: var(--primary-foreground);"><x-import component-from-global-scope="Boltz.Icon" name="check" size="{{iconMd}}"></x-import></span>
+            <h3 style="margin: 0; font-size: 28px; line-height: 34px; font-weight: 600; letter-spacing: -0.03em;">Thanks, {{firstName}}. Your brief is with us.</h3>
+            <p style="margin: 0; max-width: 42ch; font-size: 15px; line-height: 24px; color: var(--muted-foreground);">We'll read it and reply to {{email}}.</p>
+            <x-import component-from-global-scope="Boltz.Button" variant="outline" on-click="{{reset}}">Send another brief</x-import>
+          </div>
+        </sc-if>
+        <sc-if value="{{notSent}}" hint-placeholder-val="{{ true }}">
+          <form novalidate="" onSubmit="{{submit}}" style="display: flex; flex-direction: column; gap: 20px;">
+            <h3 style="margin: 0; font-size: 24px; line-height: 30px; font-weight: 600; letter-spacing: -0.03em;">Tell us about the project</h3>
+            <fieldset style="border: 0; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px;">
+              <legend style="padding: 0; margin-bottom: 10px; font-size: 14px; font-weight: 500;">What do you need? <span style="color: var(--muted-foreground); font-weight: 400;">Pick any</span></legend>
+              <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                <sc-for list="{{needs}}" as="n" hint-placeholder-count="5">
+                  <button type="button" class="{{n.cls}}" aria-pressed="{{n.pressed}}" onClick="{{n.toggle}}">{{n.label}}</button>
+                </sc-for>
+              </div>
+            </fieldset>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px;">
+              <div class="bz-field">
+                <label class="bz-label-text" for="f-name">Full name</label>
+                <input class="bz-input" id="f-name" name="name" autocomplete="name" placeholder="Your name" value="{{name}}" onChange="{{onName}}" aria-invalid="{{nameInvalid}}" aria-describedby="f-name-err">
+                <sc-if value="{{nameErr}}" hint-placeholder-val="{{ false }}"><p class="bz-field__error" id="f-name-err">Add your name so we know who to reply to.</p></sc-if>
+              </div>
+              <div class="bz-field">
+                <label class="bz-label-text" for="f-email">Email address</label>
+                <input class="bz-input" id="f-email" name="email" type="email" autocomplete="email" placeholder="you@company.com" value="{{email}}" onChange="{{onEmail}}" aria-invalid="{{emailInvalid}}" aria-describedby="f-email-err">
+                <sc-if value="{{emailErr}}" hint-placeholder-val="{{ false }}"><p class="bz-field__error" id="f-email-err">Add the full address, like sam@company.com.</p></sc-if>
+              </div>
+            </div>
+            <div class="bz-field">
+              <label class="bz-label-text" for="f-msg">What are you working on?</label>
+              <textarea class="bz-input bz-textarea" id="f-msg" name="message" rows="4" placeholder="A new site, a product, a rebrand. Goals, timing, anything useful." onChange="{{onMsg}}" aria-invalid="{{msgInvalid}}" aria-describedby="f-msg-err" value="{{msg}}"></textarea>
+              <sc-if value="{{msgErr}}" hint-placeholder-val="{{ false }}"><p class="bz-field__error" id="f-msg-err">Add a sentence or two about the project.</p></sc-if>
+            </div>
+            <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px;">
+              <x-import component-from-global-scope="Boltz.Button" type="submit" size="lg" arrow="{{yes}}">Send brief</x-import>
+              <p style="margin: 0; font-size: 12px; line-height: 18px; color: var(--muted-foreground);">Goes straight to the team. No mailing list.</p>
+            </div>
+          </form>
+        </sc-if>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 40px; padding-top: 8px;">
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <p style="margin: 0; font-size: 14px; color: var(--inverse-muted);">Prefer email?</p>
+          <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px;">
+            <span style="font-size: clamp(22px, 2.4vw, 30px); font-weight: 600; letter-spacing: -0.03em; user-select: all;">hello@boltzdot.com</span>
+            <button type="button" class="copy" onClick="{{copyEmail}}" aria-live="polite"><x-import component-from-global-scope="Boltz.Icon" name="{{copyIcon}}" size="{{iconSm}}"></x-import>{{copyLabel}}</button>
+          </div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <p style="margin: 0; font-size: 14px; color: var(--inverse-muted);">Follow our work</p>
+          <div class="socs"><a class="soc" href="https://www.linkedin.com/company/boltzdot" target="_blank" rel="noopener noreferrer" aria-label="Boltz on LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 11v5"/><path d="M8 8v.01"/><path d="M12 16v-5"/><path d="M16 16v-3a2 2 0 1 0 -4 0"/><path d="M3 7a4 4 0 0 1 4 -4h10a4 4 0 0 1 4 4v10a4 4 0 0 1 -4 4h-10a4 4 0 0 1 -4 -4z"/></svg></a><a class="soc" href="https://www.instagram.com/boltzdot" target="_blank" rel="noopener noreferrer" aria-label="Boltz on Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8a4 4 0 0 1 4 -4h8a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-8a4 4 0 0 1 -4 -4z"/><path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0"/><path d="M16.5 7.5v.001"/></svg></a></div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <p style="margin: 0; font-size: 14px; color: var(--inverse-muted);">Rather talk it through?</p>
+          <a href="mailto:hello@boltzdot.com?subject=Book%20a%2020-minute%20call" style="display: inline-flex; align-self: flex-start; align-items: center; gap: 12px; height: 52px; padding: 0 6px 0 24px; border-radius: 9999px; background: var(--spark); color: var(--on-highlight); text-decoration: none; font-size: 15px; font-weight: 600;">Book a 20-minute call <span style="display: inline-grid; place-items: center; width: 40px; height: 40px; border-radius: 9999px; background: var(--on-highlight); color: var(--spark);"><x-import component-from-global-scope="Boltz.Icon" name="arrow-up-right" size="{{iconSm}}"></x-import></span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer style="background: var(--inverse); color: var(--inverse-foreground); padding: 0 0 32px;">
+  <div class="wrap" style="display: flex; flex-direction: column; gap: 64px;">
+    <div class="foot-grid" style="padding-top: 56px; border-top: 1px solid #3a3a3f;">
+      <div style="display: flex; flex-direction: column; gap: 20px;">
+        <p style="margin: 0; max-width: 28ch; font-size: 15px; line-height: 24px; color: var(--inverse-muted);">A design and development studio for websites, digital products and brand identity.</p>
+        <div class="socs"><a class="soc" href="https://www.linkedin.com/company/boltzdot" target="_blank" rel="noopener noreferrer" aria-label="Boltz on LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 11v5"/><path d="M8 8v.01"/><path d="M12 16v-5"/><path d="M16 16v-3a2 2 0 1 0 -4 0"/><path d="M3 7a4 4 0 0 1 4 -4h10a4 4 0 0 1 4 4v10a4 4 0 0 1 -4 4h-10a4 4 0 0 1 -4 -4z"/></svg></a><a class="soc" href="https://www.instagram.com/boltzdot" target="_blank" rel="noopener noreferrer" aria-label="Boltz on Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8a4 4 0 0 1 4 -4h8a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-8a4 4 0 0 1 -4 -4z"/><path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0"/><path d="M16.5 7.5v.001"/></svg></a></div>
+      </div>
+      <div style="display: flex; flex-direction: column;">
+        <a href="#work">Work</a><a href="#studio">Studio</a><a href="#services">Services</a><a href="#faqs">FAQs</a>
+      </div>
+      <div style="display: flex; flex-direction: column;">
+        <a href="#services">Brand identity</a><a href="#services">Product design</a><a href="#services">Websites</a>
+      </div>
+      <div style="display: flex; flex-direction: column;">
+        <a href="#contact">Start a project</a><a href="#contact">Email Boltz</a><a href="#top">Back to top</a>
+      </div>
+    </div>
+    <img src="assets/boltz-wordmark-white.png" alt="Boltz" style="display: block; width: 100%; height: auto;">
+    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; font-size: 12px; color: var(--inverse-muted);">
+      <span>© 2026 Boltz. All rights reserved.</span>
+      <span>Boltz</span>
+    </div>
+  </div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"dark":{"editor":"boolean","default":false},"$preview":{"width":1440,"height":7600}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { filter: 'All', needs: ['Website'], name: '', email: '', msg: '', tried: false, sent: false, copied: false, openReview: null, navSolid: false, dark: null, step: 0, manual: false };
+  }
+  componentDidMount() {
+    this._onScroll = (e) => {
+      const t = e && e.target && e.target !== document && typeof e.target.scrollTop === 'number' ? e.target.scrollTop : (window.scrollY || document.documentElement.scrollTop || 0);
+      const hero = document.getElementById('top');
+      const solid = t > ((hero ? hero.offsetHeight : 700) - 90);
+      if (solid !== this.state.navSolid) this.setState({ navSolid: solid });
+    };
+    document.addEventListener('scroll', this._onScroll, { capture: true, passive: true });
+    let reduce = false;
+    try { reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) {}
+    if (!reduce) this._auto = setInterval(() => { if (!this.state.manual) this.setState({ step: ((this.state.step || 0) + 1) % 5 }); }, 7000);
+  }
+  componentWillUnmount() {
+    document.removeEventListener('scroll', this._onScroll, { capture: true });
+    clearInterval(this._auto);
+  }
+  renderVals() {
+    const s = this.state;
+    let sysDark = false;
+    try { sysDark = window.matchMedia('(prefers-color-scheme: dark)').matches; } catch (e) {}
+    const isDark = s.dark != null ? s.dark : (this.props.dark != null ? !!this.props.dark : sysDark);
+    const projects = [
+      { name: "JOMI Medical", type: "Website revamp", cat: "Websites", summary: "A revamp of JOMI, the journal of surgical video articles, so attendings, residents and medical students can find a procedure fast and institutions can subscribe.", bg: '#151826', fg: '#f4f4f5', accent: '#6d6ff2', href: 'case-study-jomi.html' },
+      { name: "Baucore", type: "Website design", cat: "Websites", summary: "A website for Baucore, a CRM for architectural product sellers, built around one promise: turn your CRM into an architectural product sales machine.", bg: '#0b1b3f', fg: '#f4f4f5', accent: '#3b82f6', href: 'case-study-baucore.html' },
+      { name: "Adostri", type: "Product design", cat: "Product & UX", summary: "Product design for Adostri, an Airbnb profit calculator that shows hosts and investors what a property could earn before they commit.", bg: '#fbf7f7', fg: '#1c1c1c', accent: '#e5484d', href: 'case-study-adostri.html' },
+    ];
+    const reviewData = [
+      { quote: 'Boltz turned a cluttered video library into something our residents actually enjoy using. They understood surgeons before they touched a single screen.', name: 'Dr. Sarah Mitchell', role: 'Head of Digital, JOMI Medical', initial: 'S', project: 'JOMI Medical', href: 'case-study-jomi.html', tone: 'var(--accent)', ink: 'var(--accent-foreground)', nameFirst: true },
+      { quote: 'Clear process, fast reviews, and a site our sales team is proud to send.', name: 'Daniel Brooks', role: 'Founder, Baucore', initial: 'D', project: 'Baucore', href: 'case-study-baucore.html', tone: 'var(--primary)', ink: 'var(--primary-foreground)', nameFirst: false },
+      { quote: 'Our calculator went from a spreadsheet idea to a product people pay for. The designs were simple where it mattered and detailed where it counted.', name: 'Elena Rossi', role: 'Product Lead, Adostri', initial: 'E', project: 'Adostri', href: 'case-study-adostri.html', tone: 'var(--coral)', ink: 'var(--on-highlight)', nameFirst: true }
+    ];
+    const types = ['All', 'Websites', 'Product & UX'];
+    const filters = types.map((t) => ({
+      label: t,
+      count: t === 'All' ? projects.length : projects.filter((p) => p.cat === t).length,
+      pressed: s.filter === t ? 'true' : 'false',
+      cls: 'chip' + (s.filter === t ? ' on' : ''),
+      pick: () => this.setState({ filter: t })
+    }));
+    const stepData = [
+      { short: 'Goals, scope and price', title: 'Discovery call', icon: 'message-circle', body: 'We learn your business, your customers and what a win looks like, then agree the scope and price before any work starts.', get: ['A written project brief', 'Goals and how we will measure them', 'A fixed scope and price'], you: ['One kick-off call', 'Access to anything you already have'], example: 'Adostri', href: 'case-study-adostri.html' },
+      { short: 'Sitemap, flows, wireframes', title: 'Structure & UX', icon: 'route', body: 'We map pages and flows around what visitors need to find, and test the structure with wireframes or an audit of what you have now.', get: ['Sitemap and user flows', 'Wireframes for key screens', 'An audit of your current site or app'], you: ['Review the wireframes', 'Share content you want to keep'], example: 'Adostri', href: 'case-study-adostri.html' },
+      { short: 'Screens, system, prototype', title: 'Visual design', icon: 'sparkles', body: 'Interface, visual language and content come together in high-fidelity designs and a clickable prototype, reviewed with you every week.', get: ['Key screens for desktop and mobile', 'A design system your team can reuse', 'A clickable prototype'], you: ['A weekly review', 'Sign-off on the final design'], example: 'JOMI Medical', href: 'case-study-jomi.html' },
+      { short: 'Responsive, fast, editable', title: 'Build', icon: 'code', body: 'Responsive, accessible and fast, on a CMS your team can edit without us. Every page is checked against the approved design before launch.', get: ['A production website or web app', 'CMS set-up and training', 'Accessibility and speed checks'], you: ['Add or approve content', 'Test on a staging link'], example: 'Baucore', href: 'case-study-baucore.html' },
+      { short: 'Go live and beyond', title: 'Launch & support', icon: 'bolt', body: 'We take it live, check everything works, walk your team through it and stay on hand after launch.', get: ['Launch, redirects and analytics', 'A walkthrough for your team', 'Fixes and support after launch'], you: ['Give the final go-ahead'], example: 'JOMI Medical', href: 'case-study-jomi.html' }
+    ];
+    const curStep = s.step || 0;
+    const needList = ['Website', 'Product design', 'Brand identity', 'Development', 'Motion'];
+    const needs = needList.map((n) => {
+      const on = s.needs.indexOf(n) >= 0;
+      return {
+        label: n, pressed: on ? 'true' : 'false', cls: 'chip' + (on ? ' on' : ''),
+        toggle: () => this.setState({ needs: on ? s.needs.filter((x) => x !== n) : s.needs.concat(n) })
+      };
+    });
+    const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s.email.trim());
+    const nameErr = s.tried && !s.name.trim();
+    const emailErr = s.tried && !emailOk;
+    const msgErr = s.tried && s.msg.trim().length < 10;
+    const tickerBase = [
+      { label: 'Web design', dot: 'var(--primary)' }, { label: 'Product design', dot: 'var(--coral)' },
+      { label: 'Brand identity', dot: 'var(--foreground)' }, { label: 'Development', dot: 'var(--primary)' }, { label: 'Motion', dot: 'var(--coral)' }
+    ];
+    return {
+      navCls: 'navbar ' + (s.navSolid ? 'solid' : 'on-hero'),
+      isDark, isLight: !isDark, themeCls: isDark ? 'theme-dark' : 'theme-light',
+      themeLabel: isDark ? 'Switch to light mode' : 'Switch to dark mode', themePressed: isDark ? 'true' : 'false',
+      toggleTheme: () => this.setState({ dark: !isDark }),
+      yes: true, iconXs: 12, iconSm: 16, iconMd: 22, iconLg: 32, n1: 1, n2: 2, n3: 3, n5: 5, n6: 6, n7: 7,
+      ticker: tickerBase.concat(tickerBase),
+      steps: [
+        { num: '01', title: 'Plan the structure', body: 'We start with your customers and what they need to find, then map pages and flows before anything is styled.', icon: 'route', tone: 'var(--accent)', ink: 'var(--accent-foreground)' },
+        { num: '02', title: 'Work through the details', body: 'Content hierarchy, interface and visual design come together in reviews you take part in.', icon: 'sparkles', tone: 'var(--primary)', ink: 'var(--primary-foreground)' },
+        { num: '03', title: 'Build what was agreed', body: 'The people who designed it build it, so the live site matches what you signed off.', icon: 'code', tone: 'var(--coral)', ink: 'var(--on-highlight)' }
+      ],
+      filters,
+      projects: (s.filter === 'All' ? projects : projects.filter((p) => p.cat === s.filter)).map((p, i) => Object.assign({}, p, { num: String(i + 1).padStart(2, '0') })),
+      steps: stepData.map((st, i) => ({
+        num: String(i + 1).padStart(2, '0'), title: st.title, tabId: 'pr-tab-' + i,
+        selected: i === curStep ? 'true' : 'false', cls: 'pr-tab' + (i === curStep ? ' on' : ''),
+        short: stepData[i].short,
+        fill: i < curStep ? 'full' : (i === curStep ? (s.manual ? 'full' : 'run') : ''),
+        pick: () => this.setState({ step: i, manual: true })
+      })),
+      cur: Object.assign({}, stepData[curStep], { num: String(curStep + 1).padStart(2, '0'), stepLabel: 'Step ' + String(curStep + 1).padStart(2, '0') + ' of 05', tabId: 'pr-tab-' + curStep }),
+      prevStep: () => this.setState({ step: (curStep + stepData.length - 1) % stepData.length, manual: true }),
+      nextStep: () => this.setState({ step: (curStep + 1) % stepData.length, manual: true }),
+      services: [
+        { title: 'Web design', icon: 'browser', tone: 'primary', description: 'A website should explain what you do and help people take the next step.', tags: ['Marketing websites', 'Landing pages', 'Ecommerce', 'Responsive design'] },
+        { title: 'Product design', icon: 'app-window', tone: 'spark', description: 'Interfaces shaped around how people really use your product, not feature lists.', tags: ['UX & UI', 'Prototypes', 'Design systems'] },
+        { title: 'Brand identity', icon: 'focus-2', tone: 'coral', description: 'A logo, type and colour system that works as hard in a pitch deck as on your homepage.', tags: ['Identity', 'Guidelines', 'Brand assets'] },
+        { title: 'Development', icon: 'code', tone: 'ink', description: 'Fast, accessible front ends on a CMS your team can update without a developer.', tags: ['Front end', 'CMS builds', 'Performance'] },
+        { title: 'Motion', icon: 'player-play', tone: 'accent', description: 'Movement that explains, guides attention and gives a brand its pace.', tags: ['Interactions', 'Animation', 'Social video'] }
+      ],
+      serviceCta: { title: 'Something else in mind?', text: 'Bring us in for one part of the project or the whole thing. We shape the team around the problem.', label: 'Start a conversation', href: '#contact' },
+      reviews: reviewData.map((r, i) => {
+        const open = s.openReview === i;
+        return Object.assign({}, r, {
+          nameLast: !r.nameFirst, open, expanded: open ? 'true' : 'false',
+          cls: 'tm-quote' + (open ? ' open' : ''),
+          plusLabel: (open ? 'Hide project for ' : 'Show project for ') + r.name,
+          toggle: () => this.setState({ openReview: open ? null : i })
+        });
+      }),
+      faqs: [
+        { value: 'redesign', title: 'Can you redesign our existing website?', content: 'Yes. We review the structure, content and interface, then agree what to keep, what to improve and what needs rebuilding.' },
+        { value: 'dev', title: 'Do you handle development as well as design?', content: 'Yes, every project can include both. We build it and hand over a CMS your team can run.' },
+        { value: 'time', title: 'How long does a project take?', content: 'It depends on the scope. We agree the schedule with you before work starts, so you know the launch date from day one.' },
+        { value: 'price', title: 'How do you price a project?', content: 'We price each project on its agreed scope. You get the price before any work begins.' },
+        { value: 'after', title: 'What happens after launch?', content: 'We check everything works, walk your team through the CMS and fix anything that comes up after launch. Ongoing support is available if you need it.' },
+        { value: 'own', title: 'Who owns the design and code?', content: 'You do. Once the final invoice is paid, the designs, code, content and Figma files are yours.' }
+      ],
+      next: [
+        { num: '01', text: 'We read through your brief.' },
+        { num: '02', text: 'We discuss the work and ask questions.' },
+        { num: '03', text: 'We agree the scope before getting started.' }
+      ],
+      needs,
+      name: s.name, email: s.email.trim(), msg: s.msg,
+      firstName: (s.name.trim().split(/\s+/)[0]) || 'there',
+      nameErr, emailErr, msgErr,
+      nameInvalid: nameErr ? 'true' : 'false', emailInvalid: emailErr ? 'true' : 'false', msgInvalid: msgErr ? 'true' : 'false',
+      onName: (e) => this.setState({ name: e.target.value }),
+      onEmail: (e) => this.setState({ email: e.target.value }),
+      onMsg: (e) => this.setState({ msg: e.target.value }),
+      submit: (e) => {
+        e.preventDefault();
+        const ok = s.name.trim() && emailOk && s.msg.trim().length >= 10;
+        this.setState(ok ? { sent: true, tried: false } : { tried: true });
+      },
+      reset: () => this.setState({ sent: false, name: '', email: '', msg: '', needs: ['Website'], tried: false }),
+      sent: s.sent, notSent: !s.sent,
+      copyLabel: s.copied === 'ok' ? 'Copied' : s.copied === 'no' ? 'Select it to copy' : 'Copy',
+      copyIcon: s.copied === 'ok' ? 'check' : 'copy',
+      copyEmail: () => {
+        const show = (v) => { this.setState({ copied: v }); clearTimeout(this._t); this._t = setTimeout(() => this.setState({ copied: false }), 2200); };
+        try { navigator.clipboard.writeText('hello@boltzdot.com').then(() => show('ok'), () => show('no')); } catch (err) { show('no'); }
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>

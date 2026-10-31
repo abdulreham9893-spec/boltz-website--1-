@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>JOMI Medical case study — Boltz</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Boltz is a design and development studio for websites, products and brands.">
+<link rel="icon" type="image/png" href="assets/boltz-bolt-violet.png">
+<script src="./support.js"></script>
+<link rel="stylesheet" href="ds/boltz/components/bundle.css">
+<script src="ds/boltz/components/bundle.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Koulen&amp;family=Manrope:wght@400;500;600;700&amp;display=swap">
+<style>
+body{margin:0}
+:root{--background:#ffffff;--foreground:#19191b;--card:#ffffff;--secondary:#f4f4f5;--muted:#f5f5f5;--muted-foreground:#626267;--primary:#7952d6;--primary-hover:#6741bd;--primary-foreground:#ffffff;--accent:#f1ecfc;--accent-foreground:#5b3bb0;--spark:#d6f24b;--coral:#f0603a;--on-highlight:#19191b;--border:#e4e4e7;--input:#8e8e95;--ring:#7952d6;--inverse:#151517;--inverse-foreground:#f4f4f5;--inverse-muted:#a1a1a8;--radius-full:9999px;--font-sans:"Manrope",ui-sans-serif,system-ui,sans-serif;--font-display:"Koulen","Bebas Neue","Arial Narrow",Impact,sans-serif;--font-mono:"Manrope",ui-sans-serif,system-ui,sans-serif;--ease:cubic-bezier(.25,.1,.25,1)}
+.theme-dark{--background:#0e0e10;--foreground:#f4f4f5;--card:#17171a;--secondary:#1f1f23;--muted:#131316;--muted-foreground:#a1a1a8;--accent:#241b3d;--accent-foreground:#d4c6fb;--border:#2a2a2e;--input:#66666e;--inverse:#1b1b1f;color-scheme:dark}
+a{color:var(--primary)}a:hover{color:var(--primary-hover)}
+.wrap{box-sizing:border-box;width:100%;max-width:1328px;margin:0 auto;padding-inline:clamp(16px,4vw,48px)}
+h1,h2,h3{font-family:var(--font-display);font-weight:400;font-synthesis:none;text-transform:uppercase;letter-spacing:.005em;margin:0}
+.mono{font-family:var(--font-sans);font-size:13px;font-weight:600}
+.cs-top{display:flex;align-items:center;justify-content:space-between;gap:16px;height:64px;padding:0 8px 0 24px;border-radius:20px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+.cs-back{display:inline-flex;align-items:center;gap:8px;height:44px;padding:0 18px 0 8px;border-radius:9999px;background:#6d6ff2;color:#ffffff;text-decoration:none;font:700 14px var(--font-sans)}
+.cs-back:hover{color:#ffffff}
+.cs-back span{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:9999px;background:#ffffff;color:#6d6ff2;transform:rotate(180deg)}
+.cs-back:focus-visible,.cs-next:focus-visible,.theme-btn:focus-visible{outline:2px solid var(--ring);outline-offset:3px}
+.cs-chip{display:inline-flex;align-items:center;height:32px;padding:0 14px;border-radius:9999px;border:1px solid currentColor;font-family:var(--font-sans);font-size:13px;font-weight:600}
+.cs-meta{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;padding-top:28px;border-top:1px solid currentColor}
+.cs-meta div{display:flex;flex-direction:column;gap:8px;min-width:0}
+.cs-meta span:last-child{font:600 16px/22px var(--font-sans)}
+.cs-two{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:48px}
+.cs-copy p{margin:0 0 20px;font:400 18px/30px var(--font-sans);color:var(--muted-foreground);max-width:62ch}
+.cs-copy p strong{color:var(--foreground);font-weight:600}
+.cs-dids{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.cs-did{display:flex;gap:20px;padding:28px;border-radius:24px;background:var(--secondary);transition:transform .35s var(--ease),background-color .35s var(--ease)}
+.cs-did:hover{transform:translateY(-3px);background:var(--accent)}
+.cs-did h3{font-size:32px;line-height:.95;margin-bottom:10px}
+.cs-did p{margin:0;font:400 15px/24px var(--font-sans);color:var(--muted-foreground)}
+.cs-did-n{flex:none;display:inline-grid;place-items:center;width:40px;height:40px;border-radius:9999px;background:var(--foreground);color:var(--background);font-family:var(--font-sans);font-size:13px;font-weight:600}
+.cs-shots{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.cs-shot{margin:0;position:relative;aspect-ratio:16/10;max-width:100%;border-radius:24px;overflow:hidden}
+.cs-shot-wide{grid-column:1/-1;aspect-ratio:21/9}
+.cs-shot::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(118deg,transparent 0 40px,rgba(127,127,127,.08) 40px 52px,transparent 52px 92px)}
+.cs-shot-inner{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:28px}
+.cs-shot-tag{font-family:var(--font-sans);font-size:13px;font-weight:600;opacity:.75}
+.cs-shot-name{font-family:var(--font-display);text-transform:uppercase;font-size:clamp(32px,4vw,64px);line-height:.92;max-width:16ch}
+.cs-shot-hint{font:500 13px var(--font-sans);opacity:.7}
+.cs-facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.cs-fact{display:flex;flex-direction:column;gap:6px;padding:28px;border-radius:24px;background:var(--inverse);color:var(--inverse-foreground)}
+.cs-fact:first-child{background:var(--primary);color:var(--primary-foreground)}
+.cs-fact:last-child{background:var(--spark);color:var(--on-highlight)}
+.cs-fact-n{font-family:var(--font-display);font-size:clamp(64px,7vw,104px);line-height:.9}
+.cs-fact-l{font-family:var(--font-sans);font-size:13px;font-weight:600}
+.cs-next{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:24px;padding:48px;border-radius:32px;background:#0b1b3f;color:#f4f4f5;text-decoration:none;transition:transform .4s var(--ease)}
+.cs-next:hover{color:#f4f4f5;transform:translateY(-4px)}
+.theme-btn{display:inline-grid;place-items:center;width:44px;height:44px;padding:0;border-radius:9999px;border:1px solid rgba(255,255,255,.35);background:transparent;color:inherit;cursor:pointer}
+@media (max-width:900px){.cs-meta{grid-template-columns:repeat(2,minmax(0,1fr))}.cs-two,.cs-dids,.cs-shots,.cs-facts{grid-template-columns:minmax(0,1fr)}.cs-shot-wide{aspect-ratio:16/10}}
+@media (prefers-reduced-motion:reduce){.cs-did,.cs-next{transition:none}}
+.cs-shot-img::before{display:none}.cs-shot-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 0;display:block}.cs-shot-img.contain img{object-fit:contain;object-position:50% 50%}.cs-shots .cs-shot:last-child:nth-child(even){grid-column:1/-1;aspect-ratio:21/9}
+</style>
+</helmet>
+<div class="{{themeCls}}" style="background: var(--background); color: var(--foreground); font-family: var(--font-sans); overflow-x: clip;">
+
+<header style="background: #151826; color: #f4f4f5; padding: 16px 0 96px;">
+  <div class="wrap" style="display: flex; flex-direction: column; gap: 88px;">
+    <nav aria-label="Case study" class="cs-top" style="background: rgba(255,255,255,.14); border-color: rgba(255,255,255,.3);">
+      <a href="index.html" aria-label="Boltz home" style="display: inline-flex; align-items: center; gap: 10px; color: inherit; text-decoration: none;"><img src="assets/boltz-wordmark-violet.png" alt="Boltz" style="height: 22px; width: auto;"><span class="mono" style="opacity: .7;">/ Work</span></a>
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <button type="button" class="theme-btn" onClick="{{toggleTheme}}" aria-label="{{themeLabel}}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z"/></svg></button>
+        <a class="cs-back" href="index.html#work"><span><x-import component-from-global-scope="Boltz.Icon" name="arrow-right" size="{{iconSm}}"></x-import></span>All work</a>
+      </div>
+    </nav>
+    <div style="display: flex; flex-direction: column; gap: 28px;">
+      <div style="display: flex; flex-wrap: wrap; gap: 8px; align-items: center;"><span class="mono" style="display: inline-flex; align-items: center; height: 32px; padding: 0 14px; border-radius: 9999px; background: #6d6ff2; color: #ffffff;">Case study</span><span class="cs-chip">Web design</span><span class="cs-chip">Product design</span><span class="cs-chip">Social media</span></div>
+      <h1 style="font-size: clamp(88px, 15vw, 240px); line-height: .84;">JOMI Medical<span style="color: #6d6ff2;">.</span></h1>
+      <p style="margin: 0; max-width: 54ch; font: 500 clamp(18px, 1.6vw, 22px)/1.5 var(--font-sans);">A revamp of JOMI, the journal of surgical video articles, so attendings, residents and medical students can find a procedure fast and institutions can subscribe.</p>
+    </div>
+    <div class="cs-meta">
+      <div><span class="mono" style="opacity: .7;">Client</span><span>JOMI Medical</span></div>
+      <div><span class="mono" style="opacity: .7;">Sector</span><span>Medical education</span></div>
+      <div><span class="mono" style="opacity: .7;">Work</span><span>Website revamp</span></div>
+    </div>
+  </div>
+</header>
+
+<section style="padding: 112px 0 64px;">
+  <div class="wrap" style="display: flex; flex-direction: column; gap: 32px;">
+    <figure class="cs-shot cs-shot-wide cs-shot-img" style="background: #151826;"><img src="assets/jomi-cover.jpg" alt="JOMI website revamp: front page and subscription screens" style="object-position: 50% 45%;"></figure>
+  </div>
+</section>
+
+<section style="padding: 64px 0;">
+  <div class="wrap cs-two">
+    <h2 style="font-size: clamp(56px, 6vw, 96px); line-height: .9;">The brief<span style="color: var(--coral);">.</span></h2>
+    <div class="cs-copy">
+      <p><strong>The challenge.</strong> JOMI&#x27;s library of surgical videos is its value, but the old site hid it behind text. Visitors needed to see the video first, trust the source and understand how to get access.</p>
+      <p><strong>Our approach.</strong> We led with the video. The front page opens on a play-first hero with specialty links and the institutions that trust JOMI, and every article page puts the procedure video above the write-up. Subscription pages split individual and institutional plans clearly.</p>
+    </div>
+  </div>
+</section>
+
+<section style="padding: 64px 0;">
+  <div class="wrap" style="display: flex; flex-direction: column; gap: 40px;">
+    <div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px;"><h2 style="font-size: clamp(56px, 6vw, 96px); line-height: .9;">What we did<span style="color: var(--coral);">.</span></h2><span class="mono" style="color: var(--muted-foreground);">4 parts</span></div>
+    <ol class="cs-dids">
+        <li class="cs-did"><span class="cs-did-n">01</span><div><h3>Front page</h3><p>Surgical Video Articles for Attendings, Residents, and Medical Students, with General Surgery, Neurosurgery, Urology and Global Surgery one click away.</p></div></li>
+        <li class="cs-did"><span class="cs-did-n">02</span><div><h3>Article pages</h3><p>The procedure video first, then authors, abstract and the full article, with related procedures alongside.</p></div></li>
+        <li class="cs-did"><span class="cs-did-n">03</span><div><h3>Subscriptions</h3><p>Individual and institutional plans side by side, with the access each one gives spelled out.</p></div></li>
+        <li class="cs-did"><span class="cs-did-n">04</span><div><h3>Social posts</h3><p>A set of launch, procedure and offer posts in the same visual language as the site.</p></div></li>
+    </ol>
+  </div>
+</section>
+
+<section style="padding: 64px 0;">
+  <div class="wrap" style="display: flex; flex-direction: column; gap: 40px;">
+    <div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px;"><h2 style="font-size: clamp(56px, 6vw, 96px); line-height: .9;">The screens<span style="color: var(--coral);">.</span></h2><span class="mono" style="color: var(--muted-foreground);">From the Figma file</span></div>
+    <div class="cs-shots">
+      <figure class="cs-shot cs-shot-wide cs-shot-img" style="background: #151826;"><img src="assets/jomi-front.jpg" alt="Front page" loading="lazy"></figure>
+      <figure class="cs-shot cs-shot-img" style="background: #151826;"><img src="assets/jomi-articles.jpg" alt="Article index" loading="lazy"></figure>
+      <figure class="cs-shot cs-shot-img" style="background: #151826;"><img src="assets/jomi-pricing.jpg" alt="Subscription plans" loading="lazy"></figure>
+      <figure class="cs-shot cs-shot-img" style="background: #151826;"><img src="assets/jomi-institutions.jpg" alt="Subscribing institutions" loading="lazy"></figure>
+      <figure class="cs-shot cs-shot-img contain" style="background: #151826;"><img src="assets/jomi-social.jpg" alt="Social media post" loading="lazy"></figure>
+    </div>
+  </div>
+</section>
+
+<section style="padding: 64px 0;">
+  <div class="wrap" style="display: flex; flex-direction: column; gap: 40px;">
+    <h2 style="font-size: clamp(56px, 6vw, 96px); line-height: .9;">By the numbers<span style="color: var(--coral);">.</span></h2>
+    <div class="cs-facts">
+        <div class="cs-fact"><span class="cs-fact-n">4</span><span class="cs-fact-l">specialties up front</span></div>
+        <div class="cs-fact"><span class="cs-fact-n">2</span><span class="cs-fact-l">subscription paths</span></div>
+            </div>
+  </div>
+</section>
+
+<section style="padding: 64px 0 120px;">
+  <div class="wrap" style="display: flex; flex-direction: column; gap: 16px;">
+    <a class="cs-next" href="case-study-baucore.html">
+      <div style="display: flex; flex-direction: column; gap: 16px;"><span class="mono" style="opacity: .75;">Next case study · Website design</span><span style="font-family: var(--font-display); text-transform: uppercase; font-size: clamp(64px, 9vw, 144px); line-height: .86;">Baucore</span></div>
+      <span style="display: inline-grid; place-items: center; width: 72px; height: 72px; border-radius: 9999px; background: #3b82f6; color: #ffffff;"><x-import component-from-global-scope="Boltz.Icon" name="arrow-up-right" size="{{iconLg}}"></x-import></span>
+    </a>
+    <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; padding: 40px 48px; border-radius: 32px; background: var(--primary); color: var(--primary-foreground);">
+      <span style="font-family: var(--font-display); text-transform: uppercase; font-size: clamp(40px, 4vw, 64px); line-height: .9;">Have a project like this?</span>
+      <a href="index.html#contact" style="display: inline-flex; align-items: center; gap: 12px; height: 56px; padding: 0 6px 0 26px; border-radius: 9999px; background: #ffffff; color: var(--primary); text-decoration: none; font-weight: 700;">Start a project <span style="display: inline-grid; place-items: center; width: 44px; height: 44px; border-radius: 9999px; background: var(--primary); color: #ffffff;"><x-import component-from-global-scope="Boltz.Icon" name="arrow-up-right" size="{{iconMd}}"></x-import></span></a>
+    </div>
+  </div>
+</section>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"dark":{"editor":"boolean","default":false},"$preview":{"width":1440,"height":4200}}'>
+class Component extends DCLogic {
+  constructor(props) { super(props); this.state = { dark: null }; }
+  renderVals() {
+    let sys = false;
+    try { sys = window.matchMedia('(prefers-color-scheme: dark)').matches; } catch (e) {}
+    const isDark = this.state.dark != null ? this.state.dark : (this.props.dark != null ? !!this.props.dark : sys);
+    return {
+      iconSm: 16, iconMd: 22, iconLg: 30,
+      themeCls: isDark ? 'theme-dark' : 'theme-light',
+      themeLabel: isDark ? 'Switch to light mode' : 'Switch to dark mode',
+      toggleTheme: () => this.setState({ dark: !isDark })
+    };
+  }
+}
+</script>
+</body>
+</html>
