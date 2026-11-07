@@ -339,6 +339,10 @@ h2{line-height:0.92!important;font-size:clamp(48px,6.4vw,104px)!important}
   .nav-cta-chip{width:34px;height:34px}
   .theme-btn{width:40px;height:40px}
   .tm-av{width:34px;height:34px;font-size:14px}
+  /* Clients: three logos + two 56px gaps = 328.3px, which is 0.3px wider than
+     a 360px screen's content box. Trim only this section's side padding so the
+     logos keep their 3-2 rows; the 56px gap between logos is never touched. */
+  .clients-wrap{padding-left:12px!important;padding-right:12px!important}
 }
 </style>
 </helmet>
@@ -451,9 +455,9 @@ h2{line-height:0.92!important;font-size:clamp(48px,6.4vw,104px)!important}
 
 <!-- Clients -->
 <section style="padding: 40px 0;">
-  <div class="wrap" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px 48px;">
+  <div class="wrap clients-wrap" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 24px 48px;">
     <p style="margin: 0; font-size: 13px; font-weight: 500; color: var(--muted-foreground);">Clients we've designed and built for</p>
-    <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 24px 56px; font-size: 22px; font-weight: 700; letter-spacing: -0.03em; color: var(--muted-foreground);">
+    <div style="max-width: 440px; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 24px 56px; font-size: 22px; font-weight: 700; letter-spacing: -0.03em; color: var(--muted-foreground);">
       <span style="font-weight: 400; letter-spacing: 0.12em;">JOMI</span><span>baucore</span><span style="letter-spacing: -0.02em;">adostri</span><span style="letter-spacing: -0.01em;">SCREENRANT</span><span style="font-family: Georgia, serif;">wm</span>
     </div>
   </div>
