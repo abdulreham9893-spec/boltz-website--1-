@@ -270,6 +270,76 @@ h2{line-height:0.92!important;font-size:clamp(48px,6.4vw,104px)!important}
 @media (prefers-reduced-motion:reduce){.bz-services__col,.bz-services__col::after,.bz-services__col .bz-services__title{transition:none}}
 .ww-facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin:0;padding-top:24px;border-top:1px solid var(--border)}.ww-facts div{display:flex;flex-direction:column;gap:6px;min-width:0}.ww-facts dt{font-size:13px;font-weight:600;color:var(--muted-foreground)}.ww-facts dd{margin:0;font-size:18px;font-weight:600;letter-spacing:-.02em}@media (max-width:760px){.ww-facts{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .socs{display:flex;gap:10px}.socs .soc{display:inline-grid;place-items:center;width:44px;height:44px;border-radius:9999px;border:1px solid #3a3a3f;color:var(--inverse-foreground);line-height:1;transition:background-color .25s,border-color .25s,color .25s}.socs .soc:hover{background:var(--primary);border-color:var(--primary);color:var(--primary-foreground)}.socs .soc:focus-visible{outline:2px solid var(--ring);outline-offset:3px}
+
+/* ============================================================
+   MOBILE / SMALL SCREEN ONLY (max-width:900px).
+   Nothing here runs above 900px, so the desktop layout is untouched.
+   ============================================================ */
+@media (max-width:900px){
+
+  /* --- Project steps: .pr-grid / .pr-lists are declared AFTER the original
+         breakpoint further up this file, so their single-column rules never
+         applied and the section stayed a cramped 5/7 split on phones. --- */
+  .pr-grid{grid-template-columns:minmax(0,1fr);gap:24px}
+  .pr-tabs{gap:8px}
+  .pr-tab{padding:12px 14px 12px 12px}
+  .pr-panel{padding:24px 20px}
+  .pr-lists{grid-template-columns:minmax(0,1fr);gap:20px;padding:16px 0}
+  .pr-panel-top{gap:12px}
+  .pr-foot{gap:12px}
+
+  /* --- Services intro: the inline 12-column grid left ~5px tracks, so the
+         heading and the copy were laid on top of each other. --- */
+  #services > .wrap > div:first-child{display:flex!important;flex-direction:column;align-items:flex-start!important;gap:14px;padding:24px 0 40px}
+  #services > .wrap > div:first-child h2{width:100%;min-width:0!important}
+  #services > .wrap > div:first-child p{min-width:0!important;max-width:46ch;justify-self:auto!important;align-self:flex-start!important;margin-bottom:0!important}
+
+  /* --- Testimonials headline was 427px wide on a 320-414px screen (clipped). --- */
+  #testimonials h2{font-size:clamp(52px,17vw,88px)!important}
+
+  /* --- Hero display type: keeps "#Bold ideas," on one line down to 320px. --- */
+  .poster{font-size:clamp(56px,18vw,72px)!important}
+
+  /* --- Spacing: mobile keeps the rhythm but drops the desktop padding,
+         so the hero buttons are reachable without a long scroll. --- */
+  .hero{padding:112px 0 96px!important}
+  .hero .wrap{gap:28px!important}
+  #process{padding:56px 0 64px!important}
+  #process .wrap{gap:28px!important}
+  #studio{padding:64px 0!important}
+  #studio .wrap{gap:32px!important}
+  #work{padding:64px 0!important}
+  #work .wrap{gap:32px!important}
+  #services{padding:64px 0 56px!important}
+  #testimonials{padding:64px 0!important}
+  #testimonials .wrap{gap:40px!important}
+  #faqs{padding:64px 0!important}
+  #contact{padding:64px 0!important}
+  #contact .wrap{gap:40px!important}
+  footer .wrap{gap:40px!important}
+  .two-col{gap:28px}
+  .contact-grid{gap:32px}
+  .foot-grid{gap:28px 20px;padding-top:40px!important}
+
+  /* --- Comfortable touch targets. --- */
+  .navbar > a{padding-block:12px}
+  .chip{height:40px;padding:0 18px;font-size:14px}
+  .copy{height:40px}
+  .tm-plus{width:40px;height:40px}
+  .tm-quote{min-height:0}
+  .foot-grid a{padding:7px 0}
+  .bz-services__link{padding-top:14px}
+}
+
+/* --- Narrow phones (<=400px): the nav bar and the poster were wider than the screen. --- */
+@media (max-width:400px){
+  .navbar{gap:8px;padding:0 6px 0 14px}
+  .navbar .logo-w,.navbar .logo-v{height:20px!important}
+  .nav-cta{height:44px;padding:0 4px 0 14px;gap:8px;font-size:13px}
+  .nav-cta-chip{width:34px;height:34px}
+  .theme-btn{width:40px;height:40px}
+  .tm-av{width:34px;height:34px;font-size:14px}
+}
 </style>
 </helmet>
 
