@@ -329,6 +329,12 @@ h2{line-height:0.92!important;font-size:clamp(48px,6.4vw,104px)!important}
   .tm-quote{min-height:0}
   .foot-grid a{padding:7px 0}
   .bz-services__link{padding-top:14px}
+
+  /* --- Testimonials: the desktop grid deliberately staggers some reviewer
+         cards BELOW the quote (nameLast). Stacked in one mobile column that
+         reads as the review sitting above the person's name, so put the
+         reviewer card first. Desktop (>900px) keeps its staggered order. --- */
+  .tm-col > .tm-card{order:-1}
 }
 
 /* --- Narrow phones (<=400px): the nav bar and the poster were wider than the screen. --- */
@@ -458,7 +464,7 @@ h2{line-height:0.92!important;font-size:clamp(48px,6.4vw,104px)!important}
   <div class="wrap clients-wrap" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 24px 48px;">
     <p style="margin: 0; font-size: 13px; font-weight: 500; color: var(--muted-foreground);">Clients we've designed and built for</p>
     <div style="max-width: 440px; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 24px 56px; font-size: 22px; font-weight: 700; letter-spacing: -0.03em; color: var(--muted-foreground);">
-      <span style="font-weight: 400; letter-spacing: 0.12em;">JOMI</span><span>baucore</span><span style="letter-spacing: -0.02em;">adostri</span><span style="letter-spacing: -0.01em;">SCREENRANT</span><span style="font-family: Georgia, serif;">wm</span>
+      <span style="font-weight: 400; letter-spacing: 0.12em;">JOMI</span><span>baucore</span><span style="letter-spacing: -0.02em;">adostri</span><span style="letter-spacing: -0.01em;">SCREENRANT</span><span>wm</span>
     </div>
   </div>
 </section>
@@ -585,6 +591,9 @@ h2{line-height:0.92!important;font-size:clamp(48px,6.4vw,104px)!important}
             </div>
             <blockquote style="margin: auto 0 0; font-size: clamp(18px, 1.5vw, 21px); line-height: 1.32; font-weight: 500; letter-spacing: -0.02em; text-indent: 2.2em;">{{r.quote}}</blockquote>
             <sc-if value="{{r.open}}" hint-placeholder-val="{{ false }}">
+              <sc-if value="{{r.img}}" hint-placeholder-val="{{ false }}">
+                <img src="{{r.img}}" alt="{{r.imgAlt}}" style="width: 100%; height: auto; display: block; border-radius: 12px;">
+              </sc-if>
               <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; padding-top: 16px; border-top: 1px solid var(--border);">
                 <x-import component-from-global-scope="Boltz.Badge" variant="accent">{{r.project}}</x-import>
                 <a href="{{r.href}}" style="display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 700; text-decoration: none;">Read the case study <x-import component-from-global-scope="Boltz.Icon" name="arrow-up-right" size="{{iconSm}}"></x-import></a>
@@ -758,9 +767,9 @@ class Component extends DCLogic {
       { name: "Adostri", type: "Product design", cat: "Product & UX", summary: "Product design for Adostri, an Airbnb profit calculator that shows hosts and investors what a property could earn before they commit.", bg: '#fbf7f7', fg: '#1c1c1c', accent: '#e5484d', href: 'case-study-adostri.html' },
     ];
     const reviewData = [
-      { quote: 'Boltz turned a cluttered video library into something our residents actually enjoy using. They understood surgeons before they touched a single screen.', name: 'Dr. Sarah Mitchell', role: 'Head of Digital, JOMI Medical', initial: 'S', project: 'JOMI Medical', href: 'case-study-jomi.html', tone: 'var(--accent)', ink: 'var(--accent-foreground)', nameFirst: true },
-      { quote: 'Clear process, fast reviews, and a site our sales team is proud to send.', name: 'Daniel Brooks', role: 'Founder, Baucore', initial: 'D', project: 'Baucore', href: 'case-study-baucore.html', tone: 'var(--primary)', ink: 'var(--primary-foreground)', nameFirst: false },
-      { quote: 'Our calculator went from a spreadsheet idea to a product people pay for. The designs were simple where it mattered and detailed where it counted.', name: 'Elena Rossi', role: 'Product Lead, Adostri', initial: 'E', project: 'Adostri', href: 'case-study-adostri.html', tone: 'var(--coral)', ink: 'var(--on-highlight)', nameFirst: true }
+      { quote: 'Boltz turned a cluttered video library into something our residents actually enjoy using. They understood surgeons before they touched a single screen.', name: 'Dr. Sarah Mitchell', role: 'Head of Digital, JOMI Medical', initial: 'S', project: 'JOMI Medical', href: 'case-study-jomi.html', img: 'assets/sarah-mitchell.jpg', imgAlt: 'Dr. Sarah Mitchell', tone: 'var(--accent)', ink: 'var(--accent-foreground)', nameFirst: true },
+      { quote: 'Clear process, fast reviews, and a site our sales team is proud to send.', name: 'Daniel Brooks', role: 'Founder, Baucore', initial: 'D', project: 'Baucore', href: 'case-study-baucore.html', img: 'assets/daniel-brooks.jpg', imgAlt: 'Daniel Brooks', tone: 'var(--primary)', ink: 'var(--primary-foreground)', nameFirst: false },
+      { quote: 'Our calculator went from a spreadsheet idea to a product people pay for. The designs were simple where it mattered and detailed where it counted.', name: 'Elena Rossi', role: 'Product Lead, Adostri', initial: 'E', project: 'Adostri', href: 'case-study-adostri.html', img: 'assets/elena-rossi.jpg', imgAlt: 'Elena Rossi', tone: 'var(--coral)', ink: 'var(--on-highlight)', nameFirst: true }
     ];
     const types = ['All', 'Websites', 'Product & UX'];
     const filters = types.map((t) => ({
